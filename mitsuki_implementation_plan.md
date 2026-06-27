@@ -131,3 +131,6 @@
 | 日付 | 更新内容 |
 |---|---|
 | 2026-06-27 | 初版作成。HTML4枚完成、ラグジュアリーデザイン適用 |
+| 2026-06-27 | テキスト輝度改善。--ivory #F2F2F2 / --muted #BBBBBB / --muted2 #C8C8C8 / --gold-light #F0DFBA に更新（全4HTML） |
+| 2026-06-27 | ゴールド視認性改善。--gold #E2C478 / --gold-light #F5EACB に明度↑。eyebrow/section-label: font-size .65rem・letter-spacing .18-.2em・font-weight 400 に統一（全4HTML） |
+| 2026-06-27 | フォント高級感強化。Cinzel追加（ラベル・eyebrow・breadcrumb）。card-title → Cormorant Garamond。本文 Montserrat 200 + letter-spacing .06em に変更（全4HTML） |
