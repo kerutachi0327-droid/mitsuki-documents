@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MITSUKI PROJECT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #080808;
+    --charcoal: #111111;
+    --surface: #161616;
+    --gold: #C9A96E;
+    --gold-light: #E8D5A8;
+    --gold-dim: rgba(201,169,110,0.15);
+    --ivory: #F5F0E8;
+    --muted: #666;
+    --hairline: rgba(201,169,110,0.2);
+  }
+  html, body {
+    height: 100%;
+    background: var(--black);
+    color: var(--ivory);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── 背景テクスチャ ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(201,169,110,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,169,110,0.03) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .page {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 4rem 2rem;
+  }
+
+  /* ── ヘッダー ── */
+  .crown { font-size: .65rem; letter-spacing: .4em; color: var(--gold); text-transform: uppercase; margin-bottom: 2rem; }
+  .crown::before, .crown::after { content: '──'; margin: 0 .8rem; opacity: .5; }
+
+  .title-wrap { text-align: center; margin-bottom: .8rem; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 300;
+    letter-spacing: .2em;
+    line-height: 1;
+    color: var(--ivory);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+    display: block;
+    font-size: .65em;
+    letter-spacing: .35em;
+    margin-top: .4rem;
+  }
+
+  .divider {
+    display: flex; align-items: center; gap: 1rem;
+    margin: 1.8rem auto 1rem;
+    width: min(320px, 100%);
+  }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
+  .divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+  .meta { font-size: .62rem; letter-spacing: .25em; color: var(--muted); text-transform: uppercase; margin-bottom: 3.5rem; }
+
+  /* ── カードリスト ── */
+  .cards { display: flex; flex-direction: column; gap: .6rem; width: 100%; max-width: 520px; }
+
+  a.card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.6rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    text-decoration: none;
+    color: var(--ivory);
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s, background .3s;
+  }
+  a.card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  a.card:hover { border-color: rgba(201,169,110,0.4); background: #1a1a1a; }
+  a.card:hover::before { opacity: 1; }
+
+  .card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300;
+    color: rgba(201,169,110,0.25);
+    line-height: 1; min-width: 32px; text-align: center;
+    font-style: italic;
+  }
+  .card-body { flex: 1; }
+  .card-eyebrow {
+    font-size: .55rem; letter-spacing: .3em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: .35rem;
+  }
+  .card-title { font-size: .88rem; font-weight: 400; letter-spacing: .05em; line-height: 1.4; }
+  .card-desc { font-size: .7rem; color: var(--muted); margin-top: .25rem; letter-spacing: .03em; line-height: 1.5; }
+  .card-arrow { color: var(--gold); font-size: .8rem; opacity: .6; letter-spacing: .1em; }
+
+  .card.new .card-eyebrow::after { content: ' · NEW'; color: var(--gold-light); }
+
+  .card-soon {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    padding: 1.6rem 2rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.04);
+    opacity: .35;
+    pointer-events: none;
+  }
+
+  /* ── フッター ── */
+  .footer {
+    margin-top: 4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .95rem;
+    color: rgba(201,169,110,0.4);
+    letter-spacing: .05em;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="crown">Project Documents</div>
+
+  <div class="title-wrap">
+    <h1>MITSUKI<em>Project</em></h1>
+  </div>
+
+  <div class="divider"><div class="divider-diamond"></div></div>
+  <p class="meta">2026.06 &nbsp;·&nbsp; Produced by Kenty</p>
+
+  <div class="cards">
+
+    <a class="card" href="/mitsuki_01_business_model">
+      <div class="card-num">I</div>
+      <div class="card-body">
+        <div class="card-eyebrow">Business Model</div>
+        <div class="card-title">ビジネスモデル整理</div>
+        <div class="card-desc">収益モデル・コンテンツ構成・集客フロー・コスト・関係者マップ</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="/mitsuki_02_proposal">
+      <div class="card-num">II</div>
+      <div class="card-body">
+        <div class="card-eyebrow">Proposal</div>
+        <div class="card-title">インスタ分析・提案・依頼・ロードマップ</div>
+        <div class="card-desc">アカウント分析・システム構築提案・各自への依頼事項・8月ローンチまでの行程</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card new" href="/mitsuki_insta_report">
+      <div class="card-num">III</div>
+      <div class="card-body">
+        <div class="card-eyebrow">Analysis Report</div>
+        <div class="card-title">インスタ分析レポート</div>
+        <div class="card-desc">何がバズるか、データで読み解きました</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <div class="card-soon">
+      <div class="card-num" style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:rgba(201,169,110,0.1);font-style:italic;">IV</div>
+      <div class="card-body">
+        <div class="card-eyebrow" style="font-size:.55rem;letter-spacing:.3em;color:rgba(201,169,110,0.3);text-transform:uppercase;margin-bottom:.35rem;">Coming Soon</div>
+        <div class="card-title" style="font-size:.88rem;letter-spacing:.05em;">LP・会員サイト設計</div>
+        <div class="card-desc" style="font-size:.7rem;color:var(--muted);margin-top:.25rem;">ローンチ目標：2026年8月 ｜ OTOMIZU（音水）環境で構築</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    "寄り添って最後まで伴走し、ゴールする。<br>愛を与える前提で作業に取り組む。"
+  </div>
+
+</div>
+</body>
+</html>

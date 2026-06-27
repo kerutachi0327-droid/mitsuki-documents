@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Model — Mitsuki Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #080808; --charcoal: #111;
+    --surface: #141414; --surface2: #1a1a1a;
+    --gold: #C9A96E; --gold-light: #E8D5A8;
+    --gold-dim: rgba(201,169,110,0.1);
+    --ivory: #F0EBE0; --muted: #5a5a5a; --muted2: #888;
+    --hairline: rgba(201,169,110,0.18);
+    --good: #8BB89A;
+  }
+  body { background: var(--black); color: var(--ivory); font-family: 'Montserrat', sans-serif; font-weight: 300; letter-spacing: .03em; line-height: 1.7; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 60% 40% at 85% 15%, rgba(201,169,110,0.04) 0%, transparent 60%); pointer-events: none; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 5rem 2rem 6rem; position: relative; }
+
+  .breadcrumb { font-size: .55rem; letter-spacing: .3em; color: var(--muted2); text-transform: uppercase; margin-bottom: 2.5rem; }
+  .breadcrumb span { color: var(--gold); }
+
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 300; letter-spacing: .1em; line-height: 1.1; margin-bottom: .5rem; }
+  h1 em { font-style: italic; color: var(--gold-light); }
+  .sub { font-size: .62rem; letter-spacing: .2em; color: var(--muted2); text-transform: uppercase; margin-bottom: 3rem; }
+  .rule { height: 1px; background: linear-gradient(90deg, var(--gold), rgba(201,169,110,0)); margin-bottom: 3rem; width: 80px; }
+
+  .section-label { font-size: .55rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); margin: 3.5rem 0 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
+
+  /* コンセプト */
+  .concept {
+    border: 1px solid var(--hairline); padding: 2.5rem;
+    background: linear-gradient(135deg, rgba(201,169,110,0.05), transparent);
+    margin-bottom: 2.5rem; text-align: center; position: relative;
+  }
+  .concept::before { content: ''; position: absolute; top: 0; left: 0; width: 50px; height: 1px; background: var(--gold); }
+  .concept::after { content: ''; position: absolute; top: 0; left: 0; width: 1px; height: 50px; background: var(--gold); }
+  .concept-sub { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .concept-main { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; line-height: 1.5; }
+  .concept-main em { font-style: italic; color: var(--gold-light); }
+  .concept-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; margin-top: 1.2rem; }
+  .ctag { font-size: .55rem; letter-spacing: .15em; text-transform: uppercase; border: 1px solid rgba(201,169,110,0.2); padding: .2rem .7rem; color: var(--muted2); }
+
+  /* KPI */
+  .kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--hairline); margin-bottom: 2.5rem; }
+  .kpi { background: var(--black); padding: 1.8rem 1rem; text-align: center; }
+  .kpi .num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--gold-light); line-height: 1; }
+  .kpi .unit { font-size: .6rem; color: var(--muted2); letter-spacing: .1em; }
+  .kpi .lbl { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-top: .4rem; }
+
+  /* 収益分配 */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hairline); margin-bottom: 1rem; }
+  .split-cell { background: var(--black); padding: 2rem; text-align: center; }
+  .split-pct { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: var(--gold); line-height: 1; }
+  .split-name { font-size: .78rem; font-weight: 400; letter-spacing: .05em; margin: .5rem 0 .2rem; }
+  .split-role { font-size: .62rem; letter-spacing: .08em; color: var(--muted2); }
+
+  .calc { font-size: .75rem; color: var(--muted2); text-align: center; padding: 1rem; border: 1px solid var(--hairline); border-top: none; margin-bottom: 2.5rem; }
+  .calc strong { color: var(--gold-light); font-weight: 400; }
+
+  /* コスト */
+  .cost-note { border-left: 1px solid var(--good); padding: 1rem 1.5rem; margin-bottom: 1.5rem; font-size: .78rem; line-height: 1.8; background: rgba(139,184,154,0.04); }
+  .cost-note strong { color: var(--good); font-weight: 400; }
+
+  .table { width: 100%; border-collapse: collapse; margin-bottom: .5rem; }
+  .table th { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--hairline); padding: .5rem 0; text-align: left; font-weight: 400; }
+  .table td { padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: .78rem; vertical-align: top; line-height: 1.6; }
+  .table td.price { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); font-weight: 400; white-space: nowrap; }
+  .table td.note { font-size: .68rem; color: var(--muted2); }
+
+  .warn { font-size: .72rem; color: var(--muted2); padding: 1rem 1.5rem; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 2.5rem; line-height: 1.8; }
+
+  /* コンテンツ柱 */
+  .pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--hairline); margin-bottom: 2.5rem; }
+  .pillar { background: var(--black); padding: 2rem 1.5rem; }
+  .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-style: italic; color: rgba(201,169,110,0.2); margin-bottom: .8rem; line-height: 1; }
+  .pillar-icon { font-size: 1.2rem; margin-bottom: .5rem; }
+  .pillar-name { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+  .pillar-freq { font-size: .6rem; color: var(--muted); letter-spacing: .1em; margin-bottom: .5rem; }
+  .pillar-desc { font-size: .72rem; color: var(--muted2); line-height: 1.6; }
+
+  /* 将来 */
+  .future { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hairline); margin-bottom: 2.5rem; }
+  .future-cell { background: var(--black); padding: 1.5rem; }
+  .future-icon { font-size: 1rem; margin-bottom: .5rem; }
+  .future-name { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: .4rem; }
+  .future-desc { font-size: .72rem; color: var(--muted2); line-height: 1.6; }
+
+  /* メンバー */
+  .members { margin-bottom: 2.5rem; }
+  .member-row { display: grid; grid-template-columns: 28% 1fr 28%; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); align-items: start; }
+  .member-row:first-child { border-top: 1px solid rgba(255,255,255,0.04); }
+  .member-name { font-size: .78rem; font-weight: 400; letter-spacing: .05em; }
+  .member-role { font-size: .72rem; color: var(--muted2); line-height: 1.5; }
+  .member-reward { font-family: 'Cormorant Garamond', serif; font-size: .95rem; color: var(--gold); text-align: right; line-height: 1.4; }
+
+  .footer-divider { height: 1px; background: var(--hairline); margin: 4rem 0 2rem; }
+  .footer { text-align: center; font-size: .58rem; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; line-height: 2; }
+  .footer-next { font-size: .68rem; color: var(--gold); margin-top: .5rem; letter-spacing: .1em; }
+  .back { display: inline-block; margin-top: 2rem; font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); text-decoration: none; opacity: .7; }
+  .back:hover { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="breadcrumb">Document <span>I</span> of IV &nbsp;·&nbsp; <span>2026.06</span></p>
+  <h1>Business<em> Model</em></h1>
+  <p class="sub">Mitsuki Project &nbsp;·&nbsp; Produced by Kenty &nbsp;·&nbsp; Launch: August 2026</p>
+  <div class="rule"></div>
+
+  <!-- コンセプト -->
+  <div class="section-label">Concept</div>
+  <div class="concept">
+    <div class="concept-sub">このサロン、一言で言うと？</div>
+    <div class="concept-main">
+      ロンドン在住モデル・みつきと<br>
+      <em>直接つながれる</em><br>
+      ファッション × 海外生活コミュニティ
+    </div>
+    <div style="font-size:.72rem;color:var(--muted2);margin-top:.8rem;">「憧れを学ぶ場所」＋「リアルを知る場所」＋「繋がれる場所」</div>
+    <div class="concept-tags">
+      <span class="ctag">Fashion Model が主役</span>
+      <span class="ctag">Bilingual JA / EN</span>
+      <span class="ctag">海外生活のリアル</span>
+    </div>
+  </div>
+
+  <!-- KPI -->
+  <div class="section-label">Key Numbers</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">4,980</div><div class="unit">円 / 月</div><div class="lbl">会員費（税込）</div></div>
+    <div class="kpi"><div class="num">30</div><div class="unit">人</div><div class="lbl">3ヶ月目標</div></div>
+    <div class="kpi"><div class="num">8</div><div class="unit">月</div><div class="lbl">ローンチ目標</div></div>
+    <div class="kpi"><div class="num">15</div><div class="unit">万円</div><div class="lbl">3ヶ月短期目標</div></div>
+  </div>
+
+  <!-- 収益 -->
+  <div class="section-label">Revenue Split</div>
+  <div class="split">
+    <div class="split-cell">
+      <div class="split-pct">70%</div>
+      <div class="split-name">✦ みつき</div>
+      <div class="split-role">主役・発信・ファッション講座</div>
+    </div>
+    <div class="split-cell">
+      <div class="split-pct">30%</div>
+      <div class="split-name">VIVI（OTOMIZU）</div>
+      <div class="split-role">運営・プロデュース</div>
+    </div>
+  </div>
+  <div class="calc">
+    会員30人 × 4,980円 = 月 <strong>14.9万円</strong> の売上 → 経費を引いた後に分配
+  </div>
+
+  <!-- コスト -->
+  <div class="section-label">Cost Structure</div>
+  <div class="cost-note">
+    ✦ システム利用料：<strong>¥0</strong><br>
+    OTOMIZU（音水）の既存環境を活用するため、通常かかるシステム費用は一切不要。<br>
+    ※一般的には初期費用数十万円＋月額2万4千円前後かかるシステムを、そのまま使わせてもらいます。
+  </div>
+  <table class="table">
+    <thead><tr><th>項目</th><th>月額</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>システム（OTOMIZU環境）</td>
+        <td class="price">¥0</td>
+        <td class="note">VIVIちゃんの既存環境を活用。追加費用なし</td>
+      </tr>
+      <tr>
+        <td>Kenty（技術・構築・イベント演出）</td>
+        <td class="price">¥300,000〜400,000<br><span style="font-size:.68rem;color:var(--muted2)">（初期・一括）</span></td>
+        <td class="note">運用後：¥10,000/月（最初3ヶ月）→ ¥30,000/月。イベント収益30%も別途</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    ⚠ みつきはロンドン在住のため、VIVIちゃん（OTOMIZU）の枠組みで運営。<br>
+    ✦ 将来：活動拠点と相談しながら、自分のブランドとして独立していく予定
+  </div>
+
+  <!-- コンテンツ -->
+  <div class="section-label">Content — Three Pillars</div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">I</div>
+      <div class="pillar-icon">🎬</div>
+      <div class="pillar-name">Reel Studio</div>
+      <div class="pillar-freq">月2回</div>
+      <div class="pillar-desc">バズるリール・POVの作り方をみつきが直接レクチャー。撮影・編集・ハッシュタグ戦略まで</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">II</div>
+      <div class="pillar-icon">🌍</div>
+      <div class="pillar-name">London Live</div>
+      <div class="pillar-freq">隔週 · 各週</div>
+      <div class="pillar-desc">ロンドン生活・モデル業・ファッション業界のリアル。公開Q&Aで何でも答える</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">III</div>
+      <div class="pillar-icon">✦</div>
+      <div class="pillar-name">Special Monthly</div>
+      <div class="pillar-freq">月1回</div>
+      <div class="pillar-desc">ゲスト講師トーク＆みつきのスタイリング実演。VIVI・アキラ・Kenty等</div>
+    </div>
+  </div>
+
+  <!-- 将来収益 -->
+  <div class="section-label">Future Revenue Streams</div>
+  <div class="future">
+    <div class="future-cell">
+      <div class="future-icon">👗</div>
+      <div class="future-name">Styling Consult</div>
+      <div class="future-desc">「自分に合うファッションを知りたい」会員向けの個別コンサル。次の収益源に。</div>
+    </div>
+    <div class="future-cell">
+      <div class="future-icon">🇬🇧</div>
+      <div class="future-name">London Mentoring</div>
+      <div class="future-desc">「ロンドンで働きたい」「モデルになりたい」向けの個別メンタリング。</div>
+    </div>
+    <div class="future-cell">
+      <div class="future-icon">🎪</div>
+      <div class="future-name">Premium Event</div>
+      <div class="future-desc">VIVIヒーリング・アキラのビジネス講座など。Kentyが演出担当。</div>
+    </div>
+    <div class="future-cell">
+      <div class="future-icon">✨</div>
+      <div class="future-name">Brand Collaboration</div>
+      <div class="future-desc">将来はみつきのスタイルを活かしたアパレルブランドやコラボ商品。海外在住がブランドになる。</div>
+    </div>
+  </div>
+
+  <!-- メンバー -->
+  <div class="section-label">Project Members</div>
+  <div class="members">
+    <div class="member-row">
+      <div class="member-name">✦ みつき</div>
+      <div class="member-role">主役・発信・リール講座・ファッション指導</div>
+      <div class="member-reward">利益の 70%</div>
+    </div>
+    <div class="member-row">
+      <div class="member-name">VIVI（OTOMIZU）</div>
+      <div class="member-role">オーナー・プロデューサー・ヒーリング担当</div>
+      <div class="member-reward">利益の 30%</div>
+    </div>
+    <div class="member-row">
+      <div class="member-name">Kenty</div>
+      <div class="member-role">技術・構築・ライティング・イベント演出</div>
+      <div class="member-reward">初期 ¥300,000〜400,000<br>月 1〜3万 + イベント 30%</div>
+    </div>
+    <div class="member-row">
+      <div class="member-name">Akira</div>
+      <div class="member-role">ビジネス講座・金銭問題相談対応</div>
+      <div class="member-reward">Special Guest</div>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+  <div class="footer">
+    Document I &nbsp;·&nbsp; Business Model &nbsp;·&nbsp; Mitsuki Project &nbsp;·&nbsp; Produced by Kenty &nbsp;·&nbsp; 2026.06
+    <div class="footer-next">次の資料 II では、インスタ分析・提案内容・依頼事項・ロードマップをご確認ください →</div>
+  </div>
+  <a class="back" href="/">← Back to Index</a>
+
+</div>
+</body>
+</html>

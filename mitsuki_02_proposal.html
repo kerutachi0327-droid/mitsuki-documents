@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal — Mitsuki Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #080808; --charcoal: #111;
+    --surface: #141414; --surface2: #1a1a1a;
+    --gold: #C9A96E; --gold-light: #E8D5A8;
+    --gold-dim: rgba(201,169,110,0.1);
+    --ivory: #F0EBE0; --muted: #5a5a5a; --muted2: #888;
+    --hairline: rgba(201,169,110,0.18);
+    --good: #8BB89A; --bad: #A87878;
+  }
+  body { background: var(--black); color: var(--ivory); font-family: 'Montserrat', sans-serif; font-weight: 300; letter-spacing: .03em; line-height: 1.7; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 50% 50% at 90% 10%, rgba(201,169,110,0.04) 0%, transparent 60%); pointer-events: none; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 5rem 2rem 6rem; position: relative; }
+
+  .breadcrumb { font-size: .55rem; letter-spacing: .3em; color: var(--muted2); text-transform: uppercase; margin-bottom: 2.5rem; }
+  .breadcrumb span { color: var(--gold); }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 300; letter-spacing: .1em; line-height: 1.1; margin-bottom: .5rem; }
+  h1 em { font-style: italic; color: var(--gold-light); }
+  .sub { font-size: .62rem; letter-spacing: .2em; color: var(--muted2); text-transform: uppercase; margin-bottom: 3rem; }
+  .rule { height: 1px; background: linear-gradient(90deg, var(--gold), rgba(201,169,110,0)); margin-bottom: 3rem; width: 80px; }
+
+  .section-label { font-size: .55rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); margin: 3.5rem 0 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
+
+  /* インスタ分析 */
+  .account-pills { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.5rem; }
+  .apill { font-size: .55rem; letter-spacing: .15em; text-transform: uppercase; border: 1px solid rgba(201,169,110,0.2); padding: .2rem .7rem; color: var(--muted2); }
+  .insight { border-left: 1px solid var(--gold); padding: 1.2rem 1.8rem; background: var(--gold-dim); font-size: .8rem; line-height: 1.8; margin-bottom: 2rem; }
+  .insight strong { color: var(--gold-light); font-weight: 400; }
+
+  .rank-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hairline); margin-bottom: 2rem; }
+  .rank-col { background: var(--black); padding: 1.5rem; }
+  .rank-head { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1rem; }
+  .rank-head.up { color: var(--good); }
+  .rank-head.down { color: var(--bad); }
+  .rank-item { display: flex; align-items: baseline; gap: .7rem; margin-bottom: .6rem; }
+  .rank-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; min-width: 48px; text-align: right; }
+  .rank-num.up { color: var(--good); }
+  .rank-num.down { color: var(--bad); }
+  .rank-label { font-size: .72rem; color: var(--muted2); line-height: 1.4; }
+
+  .formula { border: 1px solid var(--hairline); padding: 2rem; text-align: center; margin-bottom: 2rem; position: relative; }
+  .formula::after { content: '◆'; position: absolute; top: -7px; left: 50%; transform: translateX(-50%); background: var(--black); padding: 0 .4rem; font-size: .45rem; color: var(--gold); }
+  .formula-eq { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; line-height: 2; }
+  .formula-eq span { color: var(--gold-light); }
+  .formula-result { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--hairline); font-size: .58rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+
+  .type-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--hairline); margin-bottom: 2rem; }
+  .type-cell { background: var(--black); padding: 1.4rem 1rem; text-align: center; }
+  .type-icon { font-size: 1.1rem; margin-bottom: .4rem; }
+  .type-name { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+  .type-desc { font-size: .68rem; color: var(--muted2); line-height: 1.5; }
+
+  /* 提案フロー */
+  .flow { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .flow-step { flex: 1; min-width: 100px; border: 1px solid var(--hairline); padding: 1rem; text-align: center; }
+  .flow-icon { font-size: 1rem; margin-bottom: .3rem; }
+  .flow-name { font-size: .62rem; font-weight: 400; letter-spacing: .05em; }
+  .flow-desc { font-size: .6rem; color: var(--muted2); }
+  .flow-arrow { color: var(--gold); opacity: .5; font-size: .8rem; flex-shrink: 0; }
+  .flow-note { font-size: .68rem; color: var(--muted2); margin-bottom: 2rem; }
+
+  /* LPテーブル */
+  .lp-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+  .lp-table th { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--hairline); padding: .4rem 0; text-align: left; font-weight: 400; }
+  .lp-table td { padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: .75rem; vertical-align: top; line-height: 1.5; }
+  .lp-table td.sec { font-family: 'Cormorant Garamond', serif; font-size: .95rem; color: var(--gold); white-space: nowrap; font-weight: 400; }
+  .lp-table td.basis { font-size: .65rem; color: var(--muted); }
+
+  /* LINE */
+  .line-list { margin-bottom: 2rem; }
+  .line-item { display: flex; gap: 1.2rem; padding: .9rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .line-item:first-child { border-top: 1px solid rgba(255,255,255,0.04); }
+  .line-num { width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--black); font-size: .6rem; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: .2rem; }
+  .line-title { font-size: .8rem; font-weight: 400; margin-bottom: .2rem; }
+  .line-desc { font-size: .7rem; color: var(--muted2); line-height: 1.5; }
+
+  /* 依頼 */
+  .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hairline); margin-bottom: 2rem; }
+  .req-cell { background: var(--black); padding: 1.5rem; }
+  .req-head { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem; }
+  .req-item { font-size: .72rem; color: var(--muted2); line-height: 1.6; margin-bottom: .5rem; padding-left: .9rem; position: relative; }
+  .req-item::before { content: '○'; position: absolute; left: 0; color: var(--gold); font-size: .7rem; }
+  .req-done::before { content: '✓'; color: var(--good); }
+
+  /* ロードマップ */
+  .milestones { display: flex; gap: 1px; background: var(--hairline); margin-bottom: 2rem; }
+  .ms { background: var(--black); flex: 1; padding: 1.2rem .8rem; text-align: center; }
+  .ms.launch { background: rgba(201,169,110,0.06); }
+  .ms-date { font-size: .55rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: .4rem; }
+  .ms-goal { font-size: .72rem; color: var(--ivory); line-height: 1.5; }
+  .ms.launch .ms-goal { color: var(--gold-light); font-weight: 400; }
+
+  .timeline { margin-bottom: 2rem; }
+  .tl { border-left: 1px solid var(--hairline); margin-left: 6px; padding-left: 1.4rem; padding-bottom: 1.5rem; position: relative; }
+  .tl::before { content: ''; width: 6px; height: 6px; background: var(--gold); position: absolute; left: -3px; top: 5px; transform: rotate(45deg); }
+  .tl h4 { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+  .tl p { font-size: .72rem; color: var(--muted2); line-height: 1.7; }
+  .tl p strong { color: var(--ivory); font-weight: 400; }
+
+  .next-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--hairline); margin-bottom: 2rem; }
+  .next-cell { background: rgba(201,169,110,0.04); padding: 1.2rem 1.5rem; border: 1px solid rgba(201,169,110,0.1); }
+  .next-who { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+  .next-action { font-size: .82rem; font-weight: 400; }
+
+  .footer-divider { height: 1px; background: var(--hairline); margin: 4rem 0 2rem; }
+  .footer { text-align: center; font-size: .58rem; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; line-height: 2; }
+  .footer em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .85rem; color: rgba(201,169,110,0.4); letter-spacing: .05em; display: block; text-transform: none; margin-top: .5rem; }
+  .back { display: inline-block; margin-top: 2rem; font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); text-decoration: none; opacity: .7; }
+  .back:hover { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="breadcrumb">Document <span>II</span> of IV &nbsp;·&nbsp; <span>2026.06</span></p>
+  <h1>Proposal &amp;<em> Roadmap</em></h1>
+  <p class="sub">Instagram Analysis · System Design · Requests · Timeline</p>
+  <div class="rule"></div>
+
+  <!-- インスタ分析 -->
+  <div class="section-label">Instagram Analysis</div>
+  <div class="account-pills">
+    <span class="apill">@mitsukileemiyamoto</span>
+    <span class="apill">Followers 4.8万</span>
+    <span class="apill">Fashion Model</span>
+    <span class="apill">🇬🇧 London</span>
+    <span class="apill">Bilingual JA / EN</span>
+    <span class="apill">NYLON Japan</span>
+  </div>
+  <div class="insight">
+    結論：<strong>「日本語 × 共感POV」と「感情が動く旅コンテンツ」</strong>で圧倒的に伸びるアカウント。<br>
+    ロンドン在住モデルという希少性があり、日本語で発信するだけで「親しみ × 憧れ」が両立する。
+  </div>
+
+  <div class="rank-grid">
+    <div class="rank-col">
+      <div class="rank-head up">▲ High Engagement</div>
+      <div class="rank-item"><span class="rank-num up">3,729</span><span class="rank-label">日本語POV（急いでお店に行く）</span></div>
+      <div class="rank-item"><span class="rank-num up">3,479</span><span class="rank-label">感情的な旅コンテンツ（#okinawa）</span></div>
+      <div class="rank-item"><span class="rank-num up">1,832</span><span class="rank-label">共感ショッピングPOV（Zara）</span></div>
+      <div class="rank-item"><span class="rank-num up">969</span><span class="rank-label">メディア掲載告知（NYLON Japan）</span></div>
+    </div>
+    <div class="rank-col">
+      <div class="rank-head down">▼ Low Engagement</div>
+      <div class="rank-item"><span class="rank-num down">283</span><span class="rank-label">英語のみの食事Vlog</span></div>
+      <div class="rank-item"><span class="rank-num down">262</span><span class="rank-label">英語のみのPOV London</span></div>
+      <div class="rank-item"><span class="rank-num down">288</span><span class="rank-label">文脈なし単体Reel</span></div>
+      <div class="rank-item" style="margin-top:.5rem"><span class="rank-label" style="font-size:.65rem;color:var(--muted)">→ 英語のみは日本語の10分の1以下</span></div>
+    </div>
+  </div>
+
+  <div class="formula">
+    <div class="formula-eq">
+      <span>「日本語でキャプション」</span> ＋ <span>「共感できるシーン」</span><br>
+      ＋ <span>「みつきのリアルな姿」</span>
+    </div>
+    <div class="formula-result">= High Engagement &nbsp;3,000+</div>
+  </div>
+
+  <div class="type-grid">
+    <div class="type-cell"><div class="type-icon">🎬</div><div class="type-name">共感型</div><div class="type-desc">日本語#POVシリーズ<br>→ 新フォロワーに届く</div></div>
+    <div class="type-cell"><div class="type-icon">🌍</div><div class="type-name">ストーリー型</div><div class="type-desc">旅・感情・場所のリール<br>→ ファンになってもらう</div></div>
+    <div class="type-cell"><div class="type-icon">✦</div><div class="type-name">信頼形成型</div><div class="type-desc">メディア掲載・仕事の様子<br>→「本物」を伝える</div></div>
+  </div>
+
+  <!-- 提案 -->
+  <div class="section-label">System Design</div>
+  <p style="font-size:.68rem;color:var(--muted2);margin-bottom:1rem;letter-spacing:.05em;">お客さんの流れ（全体像）</p>
+  <div class="flow">
+    <div class="flow-step"><div class="flow-icon">📸</div><div class="flow-name">Instagram Live</div><div class="flow-desc">認知・興味</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-icon">💬</div><div class="flow-name">LINE Open Chat</div><div class="flow-desc">公開Q&A練習</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-icon">📲</div><div class="flow-name">LINE Official</div><div class="flow-desc">有料サロンの入口</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-icon">✦</div><div class="flow-name">Member Site</div><div class="flow-desc">コンテンツ視聴</div></div>
+  </div>
+  <p class="flow-note">✦ 無料 → 無料 → 有料 の3段階で、プレッシャーなく入会してもらう設計</p>
+
+  <p style="font-size:.68rem;color:var(--muted2);margin-bottom:.8rem;letter-spacing:.05em;">LP（集客ページ）の構成案</p>
+  <table class="lp-table">
+    <thead><tr><th>#</th><th>Section</th><th>Content</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td class="sec">01</td><td>HERO</td><td style="font-size:.75rem">みつきの顔写真＋「ロンドン在住モデルと直接つながれる唯一のサロン」</td><td class="basis">日本語×本人の顔が高反応</td></tr>
+      <tr><td class="sec">02</td><td>Story</td><td style="font-size:.75rem">モデルになった経緯・ロンドン生活・バイリンガルの軌跡</td><td class="basis">感情コンテンツが高反応</td></tr>
+      <tr><td class="sec">03</td><td>For Who</td><td style="font-size:.75rem">海外モデルに憧れる・ファッションを本気で学びたい・英語も学びたい</td><td class="basis">共感で刺さる</td></tr>
+      <tr><td class="sec">04</td><td>Content</td><td style="font-size:.75rem">3本柱＋みつきが直接教える雰囲気</td><td class="basis">リアルな姿が信頼につながる</td></tr>
+      <tr><td class="sec">05</td><td>Voices</td><td style="font-size:.75rem">実際の参加者のコメント（吹き出し形式）</td><td class="basis">参加意欲UP</td></tr>
+      <tr><td class="sec">06</td><td>Profile</td><td style="font-size:.75rem">みつき自己紹介・モデル歴・掲載メディア</td><td class="basis">信頼形成</td></tr>
+      <tr><td class="sec">07</td><td>FAQ</td><td style="font-size:.75rem">「英語が話せなくても入れる？」「日本在住でも大丈夫？」</td><td class="basis">不安解消</td></tr>
+      <tr><td class="sec">08</td><td>CTA</td><td style="font-size:.75rem">「LINE公式に登録する（無料）」ボタン</td><td class="basis">低ハードル誘導</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:.68rem;color:var(--muted2);margin-bottom:.8rem;letter-spacing:.05em;">LINE登録後の自動メッセージ（5通）</p>
+  <div class="line-list">
+    <div class="line-item"><div class="line-num">1</div><div><div class="line-title">自己紹介と想い</div><div class="line-desc">なぜこのサロンを作ったのか → みつきのことを好きになってもらう</div></div></div>
+    <div class="line-item"><div class="line-num">2</div><div><div class="line-title">ロンドンモデルへの道</div><div class="line-desc">日本からロンドンへ渡った経緯・苦労・乗り越えたこと → 信頼・共感を得る</div></div></div>
+    <div class="line-item"><div class="line-num">3</div><div><div class="line-title">ファッション × 海外生活の世界観</div><div class="line-desc">みつきのスタイル・価値観 → 「この人から学びたい」と感じてもらう</div></div></div>
+    <div class="line-item"><div class="line-num">4</div><div><div class="line-title">参加者の声・場の雰囲気</div><div class="line-desc">「自分も入りたい」と思わせる</div></div></div>
+    <div class="line-item"><div class="line-num">5</div><div><div class="line-title">✦ サロン入会のご案内</div><div class="line-desc">月額4,980円・申込ページへ → 入会してもらう</div></div></div>
+  </div>
+
+  <!-- 依頼 -->
+  <div class="section-label">Requests</div>
+  <div class="req-grid">
+    <div class="req-cell">
+      <div class="req-head">✦ みつきへのお願い</div>
+      <div class="req-item">インスタ写真を提供（顔・モデル仕事・ロンドン 5〜8枚）</div>
+      <div class="req-item">LINEオープンチャットに10人以上集める</div>
+      <div class="req-item">インスタライブを週2回やってみる（日本語でOK）</div>
+      <div class="req-item">体験談・想いをテキストで（箇条書きでOK）</div>
+      <div class="req-item">体験者の声を3〜5人分集める</div>
+    </div>
+    <div class="req-cell">
+      <div class="req-head">VIVI へのお願い</div>
+      <div class="req-item">サロン名（正式名称）を決める</div>
+      <div class="req-item">価格帯の最終確認（月額4,980円一択か段階制か）</div>
+      <div class="req-item">告知タイミングを共有</div>
+      <div class="req-head" style="margin-top:1.5rem;">Kenty の担当</div>
+      <div class="req-item req-done">本資料の作成・共有（完了）</div>
+      <div class="req-item">LP文案AIドラフト作成</div>
+      <div class="req-item">集客LP構築（OTOMIZU環境）</div>
+      <div class="req-item">会員サイト骨格構築</div>
+      <div class="req-item">LINEステップ配信5通の設定</div>
+    </div>
+  </div>
+
+  <!-- ロードマップ -->
+  <div class="section-label">Roadmap</div>
+  <div class="milestones">
+    <div class="ms"><div class="ms-date">6月末</div><div class="ms-goal">オープンチャット10人<br>LP初稿完成</div></div>
+    <div class="ms"><div class="ms-date">7月末</div><div class="ms-goal">全システム構築完了<br>LINE登録者50人</div></div>
+    <div class="ms launch"><div class="ms-date">8月1日</div><div class="ms-goal">🎉 サロン<br>正式ローンチ</div></div>
+    <div class="ms"><div class="ms-date">10月末</div><div class="ms-goal">有料会員30人<br>売上15万円目標</div></div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl"><h4>June · Week 3–4 &nbsp;スタートダッシュ期</h4><p><strong>みつき：</strong>友人にオープンチャット招待（目的を明記）<br><strong>Kenty：</strong>サロン名・価格・写真素材をヒアリング　LP文案ドラフト（AI）作成・共有<br><strong>全員：</strong>本資料で認識合わせ</p></div>
+    <div class="tl"><h4>July · Week 1–2 &nbsp;LP構築期</h4><p><strong>Kenty：</strong>集客LP 構築完了（OTOMIZU環境）&nbsp;/ LINE公式→ステップ配信の設定<br><strong>みつき：</strong>インスタライブ開始（週2回・5分でOK）</p></div>
+    <div class="tl"><h4>July · Week 3–4 &nbsp;会員サイト・イベント構築期</h4><p><strong>Kenty：</strong>会員サイト 構築完了 / Zoomアーカイブ フロー確立 / イベント申込フォーム 構築完了</p></div>
+    <div class="tl"><h4>August · Week 1 &nbsp;ローンチ週</h4><p><strong>全員：</strong>動作テスト（LINE登録→会員サイトまで）<br><strong>みつき：</strong>インスタライブでサロン開幕告知</p></div>
+    <div class="tl" style="padding-bottom:0"><h4>August – October &nbsp;運用・集客期</h4><p>目標：有料会員30人達成 / 月売上15万円超</p></div>
+  </div>
+
+  <div class="section-label">Next Actions</div>
+  <div class="next-grid">
+    <div class="next-cell"><div class="next-who">みつき</div><div class="next-action">写真5〜8枚を送る</div></div>
+    <div class="next-cell"><div class="next-who">みつき</div><div class="next-action">友人にオープンチャット招待を送る</div></div>
+    <div class="next-cell"><div class="next-who">Kenty</div><div class="next-action">LP文案ドラフト作成</div></div>
+    <div class="next-cell"><div class="next-who">VIVI</div><div class="next-action">サロン名を決める</div></div>
+  </div>
+
+  <div class="footer-divider"></div>
+  <div class="footer">
+    Document II &nbsp;·&nbsp; Proposal &amp; Roadmap &nbsp;·&nbsp; Mitsuki Project &nbsp;·&nbsp; Produced by Kenty &nbsp;·&nbsp; 2026.06
+    <em>"寄り添って最後まで伴走し、ゴールする。愛を与える前提で作業に取り組む。"</em>
+  </div>
+  <a class="back" href="/">← Back to Index</a>
+
+</div>
+</body>
+</html>
