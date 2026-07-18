@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Tea Room by Mitsuki Lee — 8月モニター募集</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #b8975a;
+      --gold-light: #d4b483;
+      --ink: #0a0a0a;
+      --cream: #f8f4ee;
+      --cream-dim: rgba(248,244,238,0.88);
+      --muted: rgba(248,244,238,0.5);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--ink);
+      color: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      filter: brightness(0.6);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.1) 0%,
+        rgba(10,10,10,0.0) 40%,
+        rgba(10,10,10,0.6) 75%,
+        rgba(10,10,10,0.95) 100%
+      );
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0 28px 40px;
+    }
+
+    .hero-eyebrow {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 10vw, 52px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(184,151,90,0.15);
+      border: 1px solid rgba(184,151,90,0.4);
+      padding: 8px 16px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .badge-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 52px 28px; }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+
+    /* ── MESSAGE ── */
+    .message-section {
+      background: var(--ink);
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 8px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .message-lead {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 5.5vw, 28px);
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--cream);
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .message-body {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(248,244,238,0.7);
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .message-closing {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-style: italic;
+      color: var(--gold-light);
+      line-height: 1.5;
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    /* ── PROFILE ── */
+    .profile-section {
+      background: #0f0f0f;
+    }
+
+    .profile-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .profile-photo {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      object-position: center top;
+      border: 1px solid rgba(184,151,90,0.3);
+      flex-shrink: 0;
+    }
+
+    .profile-info { flex: 1; }
+
+    .profile-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+      margin-bottom: 2px;
+    }
+
+    .profile-role {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .profile-bio {
+      font-size: 11px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(248,244,238,0.65);
+    }
+
+    /* Brands */
+    .brands {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(184,151,90,0.15);
+    }
+
+    .brands-label {
+      font-size: 8px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .brands-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+    }
+
+    .brand-tag {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: rgba(248,244,238,0.45);
+      text-transform: uppercase;
+    }
+
+    .brand-tag::after { content: ' ·'; }
+    .brand-tag:last-child::after { content: ''; }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      gap: 0;
+      margin-top: 20px;
+      border: 1px solid rgba(184,151,90,0.2);
+    }
+
+    .stat {
+      flex: 1;
+      text-align: center;
+      padding: 14px 8px;
+      border-right: 1px solid rgba(184,151,90,0.2);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+
+    .stat-label {
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* ── PROGRAM ── */
+    .program-section {
+      background: var(--ink);
+    }
+
+    .program-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .program-sub {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .program-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(184,151,90,0.15);
+    }
+
+    .program-item {
+      background: var(--ink);
+      padding: 16px 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .week-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .week-content { flex: 1; }
+
+    .week-theme {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 2px;
+    }
+
+    .week-detail {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: #0f0f0f;
+      text-align: center;
+      padding: 52px 28px 60px;
+    }
+
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 7vw, 38px);
+      font-weight: 300;
+      line-height: 1.25;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .cta-sub {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    .cta-note {
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto 16px;
+      padding: 18px 24px;
+      background: #06C755;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+
+    .btn-line:hover { opacity: 0.88; }
+
+    .line-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .cta-limit {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 24px 28px;
+      text-align: center;
+      border-top: 1px solid rgba(184,151,90,0.15);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: rgba(248,244,238,0.25);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img"
+       src="./mitsuki_phot/image00012.jpeg"
+       alt="Mitsuki Lee">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">August 2026 · Monitor Program</p>
+    <h1 class="hero-title">Secret Tea Room<br>by <em>Mitsuki Lee</em></h1>
+    <p class="hero-sub">Online Salon — 8月モニター募集</p>
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      募集受付中 · 10名限定
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGE -->
+<section class="message-section">
+  <p class="section-label">From Mitsuki</p>
+  <div class="divider"></div>
+  <p class="message-lead">
+    「誰かの正解を追いかけるのではなく、<br>
+    自分だけの価値を見つけ、育てていきませんか。」
+  </p>
+  <p class="message-body">
+    このサロンは、私が5年間のモデル活動を通して経験してきたこと、そして数え切れない試行錯誤の中で培ってきた知識やノウハウを、できる限りリアルな形で共有する場所です。
+  </p>
+  <p class="message-body">
+    食事や身体づくり、メンタルの整え方、セルフブランディング——SNSでは伝えきれないことを深くお届けしていきます。
+  </p>
+  <p class="message-body">
+    ここでお伝えする内容は、モデルを目指す方だけのものではありません。夢に向かって挑戦している方、自分をもっと好きになりたい方、新しい環境に踏み出したい方、それぞれの人生に活かせるヒントが見つかる場所になれば嬉しいです。
+  </p>
+  <p class="message-closing">
+    私自身もまだ挑戦の途中です。<br>
+    一緒に学び、成長していきましょう。
+  </p>
+</section>
+
+<!-- PROFILE -->
+<section class="profile-section">
+  <p class="section-label">Profile</p>
+  <div class="divider"></div>
+  <div class="profile-inner">
+    <img class="profile-photo"
+         src="./mitsuki_phot/image00003.jpeg"
+         alt="Mitsuki Lee">
+    <div class="profile-info">
+      <h2 class="profile-name">Mitsuki Lee</h2>
+      <p class="profile-role">Model · Creator · Editor</p>
+      <p class="profile-bio">
+        中3でInstagramスカウト、上京・ロンドン・アテネを経て2026年4月東京へ。ZARA、PAUL SMITHなど国際ブランドのモデルとして活躍。Daily Fashion News Japanではフリーランスエディターも務める。
+      </p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">75K</div>
+      <div class="stat-label">Followers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Years</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Countries</div>
+    </div>
+  </div>
+
+  <div class="brands">
+    <p class="brands-label">Works</p>
+    <div class="brands-list">
+      <span class="brand-tag">ZARA</span>
+      <span class="brand-tag">Paul Smith</span>
+      <span class="brand-tag">Fred Perry</span>
+      <span class="brand-tag">GU</span>
+      <span class="brand-tag">SSENSE Magazine</span>
+      <span class="brand-tag">Magazine Magazine</span>
+      <span class="brand-tag">NYLON Japan</span>
+      <span class="brand-tag">Rakuten Fashion Week</span>
+      <span class="brand-tag">Yohei Ohno</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="program-section">
+  <h2 class="program-title">Monitor Program</h2>
+  <p class="program-sub">4週間 · 10名限定 · 2026年8月</p>
+  <div class="program-list">
+    <div class="program-item">
+      <span class="week-num">Week 01</span>
+      <div class="week-content">
+        <p class="week-theme">食事法</p>
+        <p class="week-detail">収録ビデオ 1h — モデルの食事管理・身体づくり</p>
+      </div>
+    </div>
+    <div class="program-item">
+      <span class="week-num">Week 02</span>
+      <div class="week-content">
+        <p class="week-theme">英会話（VIVI × Mitsuki）</p>
+        <p class="week-detail">コラボ収録 — グローバルに活躍するための英会話</p>
+      </div>
+    </div>
+    <div class="program-item">
+      <span class="week-num">Week 03</span>
+      <div class="week-content">
+        <p class="week-theme">モデルペルソナ作り</p>
+        <p class="week-detail">収録ビデオ 1h — 自分だけのブランディング戦略</p>
+      </div>
+    </div>
+    <div class="program-item">
+      <span class="week-num">Week 04</span>
+      <div class="week-content">
+        <p class="week-theme">ZOOMライブセッション</p>
+        <p class="week-detail">8/23（日）11:00 — Q&A・個別フィードバック</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title">詳細はLINEで<br>お届けします</h2>
+  <p class="cta-sub">
+    LINEオープンチャットに参加すると<br>
+    モニター募集の詳細・参加条件を<br>
+    いち早くお知らせします。
+  </p>
+  <p class="cta-note">※ 友達登録なしで参加できます</p>
+  <a class="btn-line"
+     href="https://line.me/ti/g2/fFzNnSaY_HA0ZP8ocH70V8FUs3GLx-E5s--lTA"
+     target="_blank"
+     rel="noopener">
+    <svg class="line-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.02 2 11c0 3.07 1.63 5.78 4.12 7.5-.06.22-.41 1.57-.47 1.79-.08.28.1.28.21.2.08-.05 1.27-.86 1.79-1.21.72.1 1.46.16 2.22.16C17.52 19.44 22 15.42 22 11c0-4.98-4.48-9-10-9zm-2.74 11.87H7.5V9.03h1.76v4.84zm3.64 0h-1.76V9.03h1.76v4.84zm3.61-3.08h-1.76v-1.76h1.76v1.76z"/>
+    </svg>
+    LINEオープンチャットに参加する
+  </a>
+  <p class="cta-limit">募集枠 残りわずか · 8月限定</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Secret Tea Room by Mitsuki Lee &nbsp;·&nbsp; 2026
+</footer>
+
+</body>
+</html>
