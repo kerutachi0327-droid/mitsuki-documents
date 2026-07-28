@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>みつきブランド 収益設計 2026 | Secret Tea Room</title>
+<meta name="robots" content="noindex">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #0a0907;
+    color: #f0ead8;
+    font-family: 'Noto Sans JP', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+
+  .slide {
+    width: 100%;
+    max-width: 860px;
+    background: linear-gradient(145deg, #1a1712 0%, #12100d 100%);
+    border: 1px solid #3a3228;
+    border-radius: 4px;
+    padding: 44px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 80px; height: 80px;
+    border-top: 1px solid #c9a96e;
+    border-left: 1px solid #c9a96e;
+    pointer-events: none;
+  }
+  .slide::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 80px; height: 80px;
+    border-bottom: 1px solid #c9a96e;
+    border-right: 1px solid #c9a96e;
+    pointer-events: none;
+  }
+
+  /* Header */
+  .header { text-align: center; margin-bottom: 32px; }
+  .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #c9a96e;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: #f0ead8;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+  }
+  .title em {
+    font-style: italic;
+    color: #c9a96e;
+  }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 28px;
+    max-width: 400px;
+  }
+  .divider-line { flex: 1; height: 1px; background: #3a3228; }
+  .divider-dot { width: 4px; height: 4px; border-radius: 50%; background: #c9a96e; flex-shrink: 0; }
+
+  /* Vision */
+  .vision-box {
+    background: rgba(201,169,110,0.07);
+    border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 3px;
+    padding: 16px 24px;
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 13px;
+    line-height: 1.9;
+    color: #d4c9b0;
+    font-weight: 300;
+  }
+
+  /* Revenue grid */
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 26px;
+  }
+
+  .revenue-card {
+    border: 1px solid #3a3228;
+    border-radius: 3px;
+    padding: 20px 20px 18px;
+  }
+  .revenue-card.salon { border-top: 2px solid #c9a96e; }
+  .revenue-card.ec    { border-top: 2px solid #7c9e8a; }
+
+  .card-icon { font-size: 16px; margin-bottom: 4px; }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: 3px;
+  }
+  .card-title.salon { color: #c9a96e; }
+  .card-title.ec    { color: #7c9e8a; }
+  .card-subtitle {
+    font-size: 9.5px;
+    color: #6a6050;
+    margin-bottom: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .card-table { width: 100%; border-collapse: collapse; }
+  .card-table td {
+    font-size: 11.5px;
+    padding: 5px 0;
+    border-bottom: 1px solid #222018;
+    vertical-align: top;
+  }
+  .card-table tr:last-child td { border-bottom: none; }
+  .card-table td:first-child { color: #6a6050; width: 76px; }
+  .card-table td:last-child { color: #d4c9b0; }
+
+  /* Phase strip */
+  .section-label {
+    font-size: 9.5px;
+    letter-spacing: 3px;
+    color: #c9a96e;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .phase-strip {
+    display: flex;
+    border: 1px solid #3a3228;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 26px;
+  }
+  .phase-block {
+    flex: 1;
+    padding: 14px 16px;
+    border-right: 1px solid #3a3228;
+  }
+  .phase-block:last-child { border-right: none; }
+
+  .phase-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    color: #4a4030;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .phase-tag {
+    display: inline-block;
+    font-size: 8.5px;
+    padding: 1px 7px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+  }
+  .tag-now  { background: rgba(201,169,110,0.15); color: #c9a96e; }
+  .tag-next { background: rgba(255,255,255,0.04); color: #6a6050; }
+
+  .phase-title { font-size: 12px; font-weight: 500; margin-bottom: 4px; }
+  .phase-block.p1 .phase-title { color: #8aaa7c; }
+  .phase-block.p2 .phase-title { color: #c9a96e; }
+  .phase-block.p3 .phase-title { color: #9e8a7c; }
+
+  .phase-date { font-size: 10px; color: #c9a96e; margin-bottom: 6px; }
+  .phase-desc { font-size: 10.5px; color: #6a6050; line-height: 1.6; }
+
+  /* Synergy */
+  .synergy-box {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid #2a2620;
+    border-radius: 3px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .syn-col { text-align: center; flex: 1; min-width: 120px; }
+  .syn-label { font-size: 11.5px; font-weight: 500; margin-bottom: 6px; }
+  .syn-label.salon { color: #c9a96e; }
+  .syn-label.ec    { color: #7c9e8a; }
+  .syn-desc { font-size: 10.5px; color: #6a6050; line-height: 1.7; }
+
+  .syn-center { text-align: center; flex-shrink: 0; }
+  .syn-icon { font-size: 20px; color: #3a3228; margin-bottom: 4px; }
+  .ltv-badge {
+    background: rgba(201,169,110,0.1);
+    border: 1px solid rgba(201,169,110,0.28);
+    border-radius: 2px;
+    padding: 10px 18px;
+  }
+  .ltv-label { font-size: 9px; color: #6a6050; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .ltv-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: #c9a96e;
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 28px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #2e2a24;
+    text-transform: uppercase;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .slide { padding: 32px 24px 28px; }
+    .revenue-grid { grid-template-columns: 1fr; }
+    .phase-strip { flex-direction: column; }
+    .phase-block { border-right: none; border-bottom: 1px solid #3a3228; }
+    .phase-block:last-child { border-bottom: none; }
+    .synergy-box { flex-direction: column; }
+    .syn-col { min-width: unset; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="header">
+    <div class="eyebrow">Business Design 2026</div>
+    <div class="title"><em>Mitsuki</em> Brand — 収益設計</div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="vision-box">
+    ファッション・ライフスタイル領域における「みつきブランド」を軸に、<br>
+    <strong style="color:#f0ead8; font-weight:400;">コンテンツ収益 × 物販収益の2軸</strong>で持続的な収益基盤を構築する。
+  </div>
+
+  <!-- 収益設計 -->
+  <div class="section-label" style="margin-bottom:12px;">Revenue Design — 2軸収益モデル</div>
+  <div class="revenue-grid">
+    <div class="revenue-card salon">
+      <div class="card-icon">✦</div>
+      <div class="card-title salon">① 会員サロン</div>
+      <div class="card-subtitle">Membership · 継続収益</div>
+      <table class="card-table">
+        <tr><td>基盤</td><td>UTAGE（会員サイト）</td></tr>
+        <tr><td>ローンチ</td><td>2026年 9月6日</td></tr>
+        <tr><td>料金</td><td>月額 / 年額プラン</td></tr>
+        <tr><td>コンテンツ</td><td>食事法・英会話・ブランディング・ZOOMセッション</td></tr>
+        <tr><td>集客経路</td><td>Instagram → LINE公式 → 入会</td></tr>
+      </table>
+    </div>
+    <div class="revenue-card ec">
+      <div class="card-icon">◇</div>
+      <div class="card-title ec">② 物販EC</div>
+      <div class="card-subtitle">E-Commerce · 都度収益</div>
+      <table class="card-table">
+        <tr><td>商品</td><td>アクセサリー・キャンドル</td></tr>
+        <tr><td>基盤</td><td>BASE（他EC検討可）</td></tr>
+        <tr><td>ローンチ</td><td>Phase 3（時期要設定）</td></tr>
+        <tr><td>集客経路</td><td>Instagram / TikTok → ECサイト</td></tr>
+        <tr><td>強み</td><td>サロン会員への優先案内</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- フェーズ -->
+  <div class="section-label">Phase Design — ロードマップ</div>
+  <div class="phase-strip">
+    <div class="phase-block p1">
+      <div class="phase-num">Phase 01</div>
+      <div class="phase-tag tag-now">▶ 進行中</div>
+      <div class="phase-title">モニター期</div>
+      <div class="phase-date">〜 8月23日</div>
+      <div class="phase-desc">10名でコンテンツ検証<br>フィードバック収集</div>
+    </div>
+    <div class="phase-block p2">
+      <div class="phase-num">Phase 02</div>
+      <div class="phase-tag tag-next">NEXT</div>
+      <div class="phase-title">サロンローンチ</div>
+      <div class="phase-date">9月6日〜</div>
+      <div class="phase-desc">会員募集開始<br>コンテンツ本配信</div>
+    </div>
+    <div class="phase-block p3">
+      <div class="phase-num">Phase 03</div>
+      <div class="phase-tag tag-next">NEXT</div>
+      <div class="phase-title">EC同時展開</div>
+      <div class="phase-date">時期要設定</div>
+      <div class="phase-desc">アクセサリー・キャンドル販売<br>サロン会員への優先案内</div>
+    </div>
+  </div>
+
+  <!-- シナジー -->
+  <div class="section-label">Synergy — LTV最大化</div>
+  <div class="synergy-box">
+    <div class="syn-col">
+      <div class="syn-label salon">✦ サロン会員</div>
+      <div class="syn-desc">EC優先案内<br>会員限定割引</div>
+    </div>
+    <div class="syn-center">
+      <div class="syn-icon">⇄</div>
+      <div class="ltv-badge">
+        <div class="ltv-label">LTV 最大化</div>
+        <div class="ltv-value">2軸で顧客を<br>深く繋ぎ止める</div>
+      </div>
+    </div>
+    <div class="syn-col">
+      <div class="syn-label ec">◇ EC購入者</div>
+      <div class="syn-desc">サロンへの誘導<br>特典提供</div>
+    </div>
+  </div>
+
+  <div class="footer">Secret Tea Room by Mitsuki Lee &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; 2026</div>
+</div>
+</body>
+</html>
