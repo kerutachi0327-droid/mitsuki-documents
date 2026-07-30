@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitsukiへ | Secret Tea Room</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d0b09;
+    color: #f0ead8;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    padding: 24px 20px 80px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 48px 0 40px;
+  }
+  .hero-from {
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #c9a96e;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .hero-title span { color: #c9a96e; }
+  .hero-sub {
+    font-size: 17px;
+    color: #8a8070;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: #2a2620;
+    margin: 40px 0;
+  }
+
+  /* Section label */
+  .sec-label {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #c9a96e;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  /* 3グループ */
+  .group-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .group-card {
+    background: #1a1712;
+    border: 1px solid #2a2620;
+    border-radius: 8px;
+    padding: 24px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .group-card.g1 { border-left: 5px solid #7c9e8a; }
+  .group-card.g2 { border-left: 5px solid #c9a96e; }
+  .group-card.g3 { border-left: 5px solid #9e8a7c; }
+  .group-emoji { font-size: 36px; flex-shrink: 0; }
+  .group-info {}
+  .group-name { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .group-count { font-size: 16px; color: #8a8070; }
+
+  /* 動画リスト */
+  .video-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .video-item {
+    background: #1a1712;
+    border: 1px solid #2a2620;
+    border-radius: 8px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .video-num {
+    background: rgba(201,169,110,0.15);
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #c9a96e;
+    flex-shrink: 0;
+  }
+  .video-info {}
+  .video-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .video-time { font-size: 15px; color: #8a8070; }
+
+  /* スケジュール */
+  .week-list { display: flex; flex-direction: column; gap: 14px; }
+  .week-item {
+    background: #1a1712;
+    border: 1px solid #2a2620;
+    border-radius: 8px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .week-item.now { border: 2px solid #c9a96e; background: rgba(201,169,110,0.06); }
+  .week-badge {
+    background: #2a2620;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #8a8070;
+    text-align: center;
+    min-width: 64px;
+    flex-shrink: 0;
+  }
+  .week-item.now .week-badge {
+    background: rgba(201,169,110,0.2);
+    color: #c9a96e;
+  }
+  .week-info { flex: 1; }
+  .week-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .week-item.now .week-name { color: #f0ead8; }
+  .week-who { font-size: 15px; color: #8a8070; }
+  .week-item.now .week-who { color: #c9a96e; }
+  .week-icon { font-size: 28px; }
+
+  /* Q */
+  .q-list { display: flex; flex-direction: column; gap: 24px; }
+  .q-card {
+    background: #1a1712;
+    border: 1px solid #2a2620;
+    border-radius: 8px;
+    padding: 28px 24px;
+  }
+  .q-num {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #4a4030;
+    margin-bottom: 10px;
+  }
+  .q-text {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .q-options { display: flex; flex-direction: column; gap: 12px; }
+  .q-btn {
+    background: #0d0b09;
+    border: 1px solid #3a3228;
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-size: 18px;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #8a8070;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+  }
+  .q-btn:hover { border-color: #c9a96e; color: #f0ead8; }
+  .q-btn.selected {
+    border-color: #c9a96e;
+    color: #f0ead8;
+    background: rgba(201,169,110,0.08);
+  }
+  .q-dot {
+    width: 20px; height: 20px;
+    border: 2px solid #3a3228;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .q-btn.selected .q-dot {
+    background: #c9a96e;
+    border-color: #c9a96e;
+  }
+
+  /* Checklist */
+  .check-list { display: flex; flex-direction: column; gap: 14px; }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #1a1712;
+    border: 1px solid #2a2620;
+    border-radius: 8px;
+    padding: 22px 24px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.2s;
+  }
+  .check-item.done {
+    opacity: 0.4;
+    text-decoration: line-through;
+  }
+  .check-box {
+    width: 28px; height: 28px;
+    border: 2px solid #3a3228;
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    color: #c9a96e;
+    transition: all 0.2s;
+  }
+  .check-item.done .check-box {
+    background: rgba(201,169,110,0.2);
+    border-color: #c9a96e;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #2e2a24;
+  }
+
+  section { margin-bottom: 56px; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-from">From ケンティー 🙋</div>
+  <div class="hero-title">Mitsukiへ<br><span>確認させて！</span></div>
+  <div class="hero-sub">タップして答えてくれると嬉しいです</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 3グループ現状 -->
+<section>
+  <div class="sec-label">今 動いてる3つのグループ</div>
+  <div class="group-grid">
+    <div class="group-card g1">
+      <div class="group-emoji">💬</div>
+      <div class="group-info">
+        <div class="group-name">① Open Chat</div>
+        <div class="group-count">47人のコミュニティ</div>
+      </div>
+    </div>
+    <div class="group-card g2">
+      <div class="group-emoji">👥</div>
+      <div class="group-info">
+        <div class="group-name">② グループLINE</div>
+        <div class="group-count">モニター10人</div>
+      </div>
+    </div>
+    <div class="group-card g3">
+      <div class="group-emoji">📲</div>
+      <div class="group-info">
+        <div class="group-name">③ 公式LINE</div>
+        <div class="group-count">自動で届くメッセージ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 動画お願い -->
+<section>
+  <div class="sec-label">お願いしたいこと 🎥</div>
+  <p style="font-size:19px; color:#8a8070; margin-bottom:24px;">
+    動画を<strong style="color:#f0ead8; font-size:22px;">4本</strong>撮ってほしい。<br>
+    同じ動画を3グループ全部で使うから<br>
+    <strong style="color:#c9a96e;">撮るのは1回だけ！</strong>
+  </p>
+  <div class="video-list">
+    <div class="video-item">
+      <div class="video-num">1</div>
+      <div class="video-info">
+        <div class="video-title">自己紹介</div>
+        <div class="video-time">30〜60秒</div>
+      </div>
+      <div style="font-size:28px;">🌿</div>
+    </div>
+    <div class="video-item">
+      <div class="video-num">2</div>
+      <div class="video-info">
+        <div class="video-title">なんで始めたか</div>
+        <div class="video-time">60秒以内</div>
+      </div>
+      <div style="font-size:28px;">💬</div>
+    </div>
+    <div class="video-item">
+      <div class="video-num">3</div>
+      <div class="video-info">
+        <div class="video-title">毎月の内容紹介</div>
+        <div class="video-time">60秒以内</div>
+      </div>
+      <div style="font-size:28px;">📅</div>
+    </div>
+    <div class="video-item">
+      <div class="video-num">4</div>
+      <div class="video-info">
+        <div class="video-title">ジュエリー・香水</div>
+        <div class="video-time">30〜60秒</div>
+      </div>
+      <div style="font-size:28px;">💎</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- スケジュール -->
+<section>
+  <div class="sec-label">8月のプログラム</div>
+  <div class="week-list">
+    <div class="week-item now">
+      <div class="week-badge">今週！</div>
+      <div class="week-info">
+        <div class="week-name">食事・モデルの話</div>
+        <div class="week-who">Mitsuki ← これ今週から</div>
+      </div>
+      <div class="week-icon">🌿</div>
+    </div>
+    <div class="week-item">
+      <div class="week-badge">8/6〜</div>
+      <div class="week-info">
+        <div class="week-name">英会話</div>
+        <div class="week-who">ViVi</div>
+      </div>
+      <div class="week-icon">🗣️</div>
+    </div>
+    <div class="week-item">
+      <div class="week-badge">8/13〜</div>
+      <div class="week-info">
+        <div class="week-name">SNS講座＋ゲスト</div>
+        <div class="week-who">ナナさん＋Mitsuki</div>
+      </div>
+      <div class="week-icon">📱</div>
+    </div>
+    <div class="week-item">
+      <div class="week-badge">8/20〜</div>
+      <div class="week-info">
+        <div class="week-name">ZOOMセッション</div>
+        <div class="week-who">全員</div>
+      </div>
+      <div class="week-icon">💻</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 質問 -->
+<section>
+  <div class="sec-label">聞かせてほしいこと</div>
+  <div class="q-list">
+
+    <div class="q-card">
+      <div class="q-num">Q 01</div>
+      <div class="q-text">動画、どんな感じで撮りたい？</div>
+      <div class="q-options">
+        <button class="q-btn" onclick="pick(this)">
+          <div class="q-dot"></div>自撮り・カジュアルでOK
+        </button>
+        <button class="q-btn" onclick="pick(this)">
+          <div class="q-dot"></div>セッティングしてちゃんと撮りたい
+        </button>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 02</div>
+      <div class="q-text">動画①、今週中に撮れそう？</div>
+      <div class="q-options">
+        <button class="q-btn" onclick="pick(this)">
+          <div class="q-dot"></div>撮れる！
+        </button>
+        <button class="q-btn" onclick="pick(this)">
+          <div class="q-dot"></div>来週以降になりそう
+        </button>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 03</div>
+      <div class="q-text">シークレットパーティー<br>いつにする？</div>
+      <div class="q-options">
+        <button class="q-btn" onclick="pick(this)">
+          <div class="q-dot"></div>9/6より前にやりたい
+        </button>
+        <button class="q-btn" onclick="pick(this)">
+          <div class="q-dot"></div>9/6以降でいい
+        </button>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 04</div>
+      <div class="q-text">ジュエリーの告知<br>いつ解禁したい？</div>
+      <div class="q-options">
+        <button class="q-btn" onclick="pick(this)">
+          <div class="q-dot"></div>9/6ローンチと同時
+        </button>
+        <button class="q-btn" onclick="pick(this)">
+          <div class="q-dot"></div>ローンチより前に先行告知
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- チェックリスト -->
+<section>
+  <div class="sec-label">これが決まれば全部動ける ✅</div>
+  <div class="check-list">
+    <div class="check-item" onclick="checkToggle(this)">
+      <div class="check-box">✓</div>
+      動画の撮り方
+    </div>
+    <div class="check-item" onclick="checkToggle(this)">
+      <div class="check-box">✓</div>
+      動画①の撮影日
+    </div>
+    <div class="check-item" onclick="checkToggle(this)">
+      <div class="check-box">✓</div>
+      パーティーの日程
+    </div>
+    <div class="check-item" onclick="checkToggle(this)">
+      <div class="check-box">✓</div>
+      ジュエリー告知タイミング
+    </div>
+  </div>
+</section>
+
+<div class="footer">Secret Tea Room by Mitsuki Lee · 2026</div>
+
+<script>
+function pick(btn) {
+  const group = btn.closest('.q-options').querySelectorAll('.q-btn');
+  group.forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+function checkToggle(el) {
+  el.classList.toggle('done');
+}
+</script>
+</body>
+</html>
