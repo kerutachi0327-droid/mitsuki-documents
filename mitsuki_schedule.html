@@ -3,241 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>今後のスケジュール｜Secret Tea Room by Mitsuki Lee</title>
+<title>今後のスケジュール | Secret Tea Room by Mitsuki Lee</title>
+<meta name="robots" content="noindex">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;background:#F9F7F4;color:#2C1A10;font-size:14px;line-height:1.7}
-.page{max-width:720px;margin:0 auto;padding:32px 20px 60px}
+html,body{background:#0a0907;color:#f0ead8;font-family:'Noto Sans JP',sans-serif;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:32px 16px}
+.slide{width:100%;max-width:780px;background:linear-gradient(145deg,#1a1712 0%,#12100d 100%);border:1px solid #3a3228;border-radius:4px;padding:44px 48px 40px;position:relative;overflow:hidden}
+.slide::before{content:'';position:absolute;top:0;left:0;width:80px;height:80px;border-top:1px solid #c9a96e;border-left:1px solid #c9a96e;pointer-events:none}
+.slide::after{content:'';position:absolute;bottom:0;right:0;width:80px;height:80px;border-bottom:1px solid #c9a96e;border-right:1px solid #c9a96e;pointer-events:none}
 
-.doc-header{text-align:center;padding-bottom:24px;margin-bottom:32px;border-bottom:1px solid #D4C4A8}
-.brand{font-size:12px;letter-spacing:.12em;color:#9B7E5A;margin-bottom:8px}
-.doc-title{font-size:24px;font-weight:bold;color:#3A2010;margin-bottom:6px}
-.doc-sub{font-size:13px;color:#9B7E5A}
+.header{text-align:center;margin-bottom:28px}
+.eyebrow{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:4px;color:#c9a96e;text-transform:uppercase;margin-bottom:8px}
+.title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#f0ead8;letter-spacing:.05em;line-height:1.3}
+.title em{font-style:italic;color:#c9a96e}
 
-.legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;padding:12px 16px;background:#fff;border-radius:8px;border:1px solid #E8DDD0}
-.bd{font-size:11px;font-weight:500;padding:3px 10px;border-radius:10px}
-.ch-g{background:#DCFCE7;color:#166534}
-.ch-o{background:#DBEAFE;color:#1E40AF}
-.ch-l{background:#FEF3C7;color:#92400E}
-.hear-b{background:#CCFBF1;color:#0F766E}
-.done-b{background:#E0E7FF;color:#3730A3}
+.divider{display:flex;align-items:center;gap:12px;margin:0 auto 28px;max-width:400px}
+.divider-line{flex:1;height:1px;background:#3a3228}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:#c9a96e;flex-shrink:0}
 
-/* timeline */
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;padding:12px 18px;border:1px solid #2a2620;border-radius:3px}
+.lg-item{display:flex;align-items:center;gap:6px;font-size:10px;color:#6a6050}
+.lg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ld-done{background:#818CF8}
+.ld-vid{background:#c9a96e}
+.ld-hear{background:#7c9e8a}
+.ld-key{background:#8aaa7c}
+.ld-launch{background:#9e8a6a}
+
+.section-label{font-size:9.5px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin:20px 0 12px 88px}
+
+/* Timeline */
 .tl-item{display:flex;gap:0;margin-bottom:0}
-.tl-l{width:76px;min-width:76px;text-align:right;padding-right:16px;padding-top:4px}
-.tl-dt{font-size:11px;font-weight:600;color:#6B4C35;line-height:1.5}
+.tl-l{width:80px;min-width:80px;text-align:right;padding-right:16px;padding-top:4px}
+.tl-dt{font-family:'Cormorant Garamond',serif;font-size:12px;color:#6a6050;line-height:1.5}
 .tl-m{display:flex;flex-direction:column;align-items:center}
-.dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:4px}
-.line{width:2px;flex:1;min-height:20px}
-.tl-r{flex:1;padding:0 0 18px 16px}
-.card{background:#fff;border:1px solid #E8DDD0;border-radius:10px;padding:12px 16px}
-.card.done{border-color:#818CF8;background:#EEF2FF}
-.card.vid{border-color:#F59E0B;background:#FFFBEB}
-.card.hear{border-color:#14B8A6;background:#F0FDFA}
-.card.zoom{border-color:#2D7D4A;background:#F0FDF4}
-.card.launch{border-color:#9B7E5A;background:#FAF5EC}
-.card.warn{border-color:#EA580C;background:#FFF7ED}
-.ti{font-size:13px;font-weight:bold;margin-bottom:5px}
-.done .ti{color:#3730A3}
-.vid .ti{color:#92400E}
-.hear .ti{color:#0F766E}
-.zoom .ti{color:#166534}
-.launch .ti{color:#5C4033}
-.warn .ti{color:#9A3412}
-.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
-.note{font-size:12px;color:#6B4C35;margin-top:6px;line-height:1.6}
-.hear .note{color:#0F766E}
-.zoom .note{color:#166534}
-.warn .note{color:#9A3412}
-.must{display:inline-flex;align-items:center;gap:4px;font-size:10px;background:#FEF2F2;color:#991B1B;border:1px solid #FECACA;border-radius:6px;padding:2px 8px;margin-top:6px;font-weight:bold}
-.sec-label{font-size:11px;font-weight:bold;letter-spacing:.08em;color:#9B7E5A;margin:20px 0 10px 92px;text-transform:uppercase}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.dot.lg{width:14px;height:14px;margin-left:-2px;margin-top:4px}
+.line{width:1px;flex:1;min-height:18px}
+.tl-r{flex:1;padding:0 0 16px 16px}
 
-.footer{text-align:center;color:#B0906E;font-size:11px;margin-top:40px;padding-top:16px;border-top:1px solid #E8DDD0}
+/* Cards */
+.card{border:1px solid #2a2620;border-radius:3px;padding:12px 16px}
+.card.done{border-color:#2e3e2c;border-left:2px solid #818CF8;background:rgba(129,140,248,.03)}
+.card.vid{border-color:#3e3220;border-left:2px solid #c9a96e;background:rgba(201,169,110,.02)}
+.card.hear{border-color:#1e3030;border-left:2px solid #7c9e8a;background:rgba(124,158,138,.03)}
+.card.zoom{border-color:#1e3828;border-left:2px solid #8aaa7c;background:rgba(138,170,124,.03)}
+.card.launch{border-color:#3a3228;border-left:2px solid #c9a96e;background:rgba(201,169,110,.04)}
+.card.std{border-color:#2a2620}
+
+.ct{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;margin-bottom:4px}
+.done .ct{color:#818CF8}
+.vid .ct{color:#c9a96e}
+.hear .ct{color:#7c9e8a}
+.zoom .ct{color:#8aaa7c}
+.launch .ct{color:#c9a96e}
+.std .ct{color:#d4c9b0}
+
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.chip{font-size:8.5px;padding:1px 8px;border-radius:8px}
+.chip-g{background:rgba(138,170,124,.12);color:#6a8a62;border:1px solid rgba(138,170,124,.2)}
+.chip-o{background:rgba(100,130,200,.1);color:#6a82b0;border:1px solid rgba(100,130,200,.2)}
+.chip-l{background:rgba(200,180,100,.08);color:#9a8a52;border:1px solid rgba(200,180,100,.15)}
+
+.cn{font-size:10.5px;color:#6a6050;margin-top:5px;line-height:1.6}
+.hear .cn{color:#5a7a72}
+.zoom .cn{color:#5a7a62}
+.must{display:inline-flex;align-items:center;gap:4px;font-size:8.5px;background:rgba(180,80,60,.1);color:#9a5040;border:1px solid rgba(180,80,60,.2);border-radius:6px;padding:1px 8px;margin-top:5px}
+
+.footer{margin-top:28px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:3px;color:#2e2a24;text-transform:uppercase}
+
+@media(max-width:600px){.slide{padding:32px 24px 28px}}
 </style>
 </head>
 <body>
-<div class="page">
+<div class="slide">
 
-<div class="doc-header">
-  <div class="brand">SECRET TEA ROOM BY MITSUKI LEE</div>
-  <div class="doc-title">今後のスケジュール</div>
-  <div class="doc-sub">2026年8月〜9月6日ローンチまでのロードマップ</div>
-</div>
+  <div class="header">
+    <div class="eyebrow">Roadmap — August to September 2026</div>
+    <div class="title"><em>今後のスケジュール</em> — 9/6 Launch</div>
+  </div>
+  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
 
-<div class="legend">
-  <span class="bd ch-g">モニターグループLINE</span>
-  <span class="bd ch-o">オープンチャット</span>
-  <span class="bd ch-l">公式LINE</span>
-  <span class="bd hear-b">ヒアリング（必須）</span>
-  <span class="bd done-b">✓ 完了済み</span>
-</div>
+  <div class="legend">
+    <div class="lg-item"><div class="lg-dot ld-done"></div>完了済み</div>
+    <div class="lg-item"><div class="lg-dot ld-vid"></div>受領済み動画（投稿待ち）</div>
+    <div class="lg-item"><div class="lg-dot ld-hear"></div>ヒアリング（サンプル取得・必須）</div>
+    <div class="lg-item"><div class="lg-dot ld-key"></div>確定イベント</div>
+  </div>
 
-<div class="sec-label">完了済み</div>
+  <div class="section-label" style="margin-top:0">完了済み</div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">投稿済み</div></div>
-  <div class="tl-m"><div class="dot" style="background:#818CF8"></div><div class="line" style="background:#C7D2FE"></div></div>
-  <div class="tl-r"><div class="card done">
-    <div class="ti">✓ 挨拶動画・自己紹介動画 — 投稿完了</div>
-    <div class="chips"><span class="bd ch-o">オープンチャット</span><span class="bd ch-l">公式LINE</span></div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">投稿済み</div></div>
+    <div class="tl-m"><div class="dot" style="background:#818CF8"></div><div class="line" style="background:#2a2a3a"></div></div>
+    <div class="tl-r"><div class="card done">
+      <div class="ct">✓ 挨拶動画 · 自己紹介動画 — 投稿完了</div>
+      <div class="chips"><span class="chip chip-o">オープンチャット</span><span class="chip chip-l">公式LINE</span></div>
+    </div></div>
+  </div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">Week 1<br>配信済み</div></div>
-  <div class="tl-m"><div class="dot" style="background:#818CF8"></div><div class="line" style="background:#C7D2FE"></div></div>
-  <div class="tl-r"><div class="card done">
-    <div class="ti">✓ Week1 食事法 ＋ モデルペルソナ作り — 配信完了</div>
-    <div class="chips"><span class="bd ch-g">モニターグループLINE（動画URL）</span></div>
-    <div class="note">UTAGE動画ページ2本。モニター10名が視聴中</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">Week 1<br>配信済み</div></div>
+    <div class="tl-m"><div class="dot" style="background:#818CF8"></div><div class="line" style="background:#2a2a3a"></div></div>
+    <div class="tl-r"><div class="card done">
+      <div class="ct">✓ Week1 食事法 ＋ モデルペルソナ作り — 配信完了</div>
+      <div class="chips"><span class="chip chip-g">グループLINE（動画URL）</span></div>
+      <div class="cn">UTAGEページ2本。モニター10名が視聴中</div>
+    </div></div>
+  </div>
 
-<div class="sec-label">今すぐ対応（8/7打ち合わせ後〜今週中）</div>
+  <div class="section-label">今すぐ対応（8/7 打ち合わせ後〜今週中）</div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">動画①<br>最速</div></div>
-  <div class="tl-m"><div class="dot" style="background:#F59E0B;box-shadow:0 0 0 3px #FDE68A"></div><div class="line" style="background:#FCD34D"></div></div>
-  <div class="tl-r"><div class="card vid">
-    <div class="ti">▶ みつきの思い動画 — 受領済み・投稿待ち</div>
-    <div class="chips"><span class="bd ch-o">オープンチャット</span><span class="bd ch-l">公式LINE</span></div>
-    <div class="note">想い・世界観を最初に届けてサロンへの共感を作る</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">動画①<br>最速</div></div>
+    <div class="tl-m"><div class="dot" style="background:#c9a96e"></div><div class="line" style="background:#3a3020"></div></div>
+    <div class="tl-r"><div class="card vid">
+      <div class="ct">▸ みつきの思い動画 — 受領済み · 投稿待ち</div>
+      <div class="chips"><span class="chip chip-o">オープンチャット</span><span class="chip chip-l">公式LINE</span></div>
+      <div class="cn">想い・世界観を最初に届けてサロンへの共感を作る</div>
+    </div></div>
+  </div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">Week1<br>ヒアリング</div></div>
-  <div class="tl-m"><div class="dot" style="background:#14B8A6;box-shadow:0 0 0 3px #99F6E4"></div><div class="line" style="background:#99F6E4"></div></div>
-  <div class="tl-r"><div class="card hear">
-    <div class="ti">Week1 感想ヒアリング — モニター10名に質問</div>
-    <div class="chips"><span class="bd ch-g">モニターグループLINE</span></div>
-    <div class="note">「食事法・モデルペルソナ動画を見てどうでしたか？」率直な感想を収集</div>
-    <div class="must">⚠ サンプル取得に必須の工程</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">Week1<br>ヒアリング</div></div>
+    <div class="tl-m"><div class="dot" style="background:#7c9e8a"></div><div class="line" style="background:#1e3030"></div></div>
+    <div class="tl-r"><div class="card hear">
+      <div class="ct">Week1 感想ヒアリング — モニター10名</div>
+      <div class="chips"><span class="chip chip-g">グループLINE</span></div>
+      <div class="cn">「食事法・モデルペルソナ動画を見てどうでしたか？」率直な感想を収集</div>
+      <div class="must">⚑ サンプル取得に必須の工程</div>
+    </div></div>
+  </div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">動画②<br>数日後</div></div>
-  <div class="tl-m"><div class="dot" style="background:#F59E0B;box-shadow:0 0 0 3px #FDE68A"></div><div class="line" style="background:#FCD34D"></div></div>
-  <div class="tl-r"><div class="card vid">
-    <div class="ti">▶ 4週プログラム説明動画 — 受領済み・投稿待ち</div>
-    <div class="chips"><span class="bd ch-o">オープンチャット</span><span class="bd ch-l">公式LINE</span></div>
-    <div class="note">「こんな内容が学べます」と具体的に見せて申込み意向を高める</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">動画②<br>数日後</div></div>
+    <div class="tl-m"><div class="dot" style="background:#c9a96e"></div><div class="line" style="background:#3a3020"></div></div>
+    <div class="tl-r"><div class="card vid">
+      <div class="ct">▸ 4週プログラム説明動画 — 受領済み · 投稿待ち</div>
+      <div class="chips"><span class="chip chip-o">オープンチャット</span><span class="chip chip-l">公式LINE</span></div>
+      <div class="cn">「こんな内容が学べます」と具体的に見せて申込み意向を高める</div>
+    </div></div>
+  </div>
 
-<div class="sec-label">Week 2（配信日：打ち合わせで確定）</div>
+  <div class="section-label">Week 2（配信日：打ち合わせで確定）</div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">Week 2<br>配信</div></div>
-  <div class="tl-m"><div class="dot" style="background:#9B7E5A"></div><div class="line" style="background:#D1C4A8"></div></div>
-  <div class="tl-r"><div class="card">
-    <div class="ti" style="color:#3A2010">Week2 英会話 — VIVIさん動画 配信</div>
-    <div class="chips"><span class="bd ch-g">モニターグループLINE（動画URL）</span></div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">Week 2<br>配信</div></div>
+    <div class="tl-m"><div class="dot" style="background:#3a3228"></div><div class="line" style="background:#2a2620"></div></div>
+    <div class="tl-r"><div class="card std">
+      <div class="ct">Week2 英会話 — VIVIさん動画 配信</div>
+      <div class="chips"><span class="chip chip-g">グループLINE（動画URL）</span></div>
+    </div></div>
+  </div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">動画③<br>Week2<br>前後</div></div>
-  <div class="tl-m"><div class="dot" style="background:#F59E0B"></div><div class="line" style="background:#FCD34D"></div></div>
-  <div class="tl-r"><div class="card vid">
-    <div class="ti">▶ モニターLINEの様子動画 — 受領済み・投稿待ち</div>
-    <div class="chips"><span class="bd ch-o">オープンチャット</span><span class="bd ch-l">公式LINE</span></div>
-    <div class="note">「プログラムが動いています」の熱量を外部に届ける</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">動画③<br>Week2前後</div></div>
+    <div class="tl-m"><div class="dot" style="background:#c9a96e"></div><div class="line" style="background:#3a3020"></div></div>
+    <div class="tl-r"><div class="card vid">
+      <div class="ct">▸ モニターLINEの様子動画 — 受領済み · 投稿待ち</div>
+      <div class="chips"><span class="chip chip-o">オープンチャット</span><span class="chip chip-l">公式LINE</span></div>
+      <div class="cn">「プログラムが動いています」の熱量を外部に届ける</div>
+    </div></div>
+  </div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">Week2<br>ヒアリング</div></div>
-  <div class="tl-m"><div class="dot" style="background:#14B8A6;box-shadow:0 0 0 3px #99F6E4"></div><div class="line" style="background:#99F6E4"></div></div>
-  <div class="tl-r"><div class="card hear">
-    <div class="ti">Week2 感想ヒアリング</div>
-    <div class="chips"><span class="bd ch-g">モニターグループLINE</span></div>
-    <div class="note">英会話動画の感想・気づきを収集</div>
-    <div class="must">⚠ サンプル取得に必須の工程</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">Week2<br>ヒアリング</div></div>
+    <div class="tl-m"><div class="dot" style="background:#7c9e8a"></div><div class="line" style="background:#1e3030"></div></div>
+    <div class="tl-r"><div class="card hear">
+      <div class="ct">Week2 感想ヒアリング</div>
+      <div class="chips"><span class="chip chip-g">グループLINE</span></div>
+      <div class="cn">英会話動画の感想・気づきを収集</div>
+      <div class="must">⚑ サンプル取得に必須の工程</div>
+    </div></div>
+  </div>
 
-<div class="sec-label">Week 3（配信日：打ち合わせで確定）</div>
+  <div class="section-label">Week 3（配信日：打ち合わせで確定）</div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">Week 3<br>配信</div></div>
-  <div class="tl-m"><div class="dot" style="background:#9B7E5A"></div><div class="line" style="background:#D1C4A8"></div></div>
-  <div class="tl-r"><div class="card">
-    <div class="ti" style="color:#3A2010">Week3 SNS講座 — NANAさん動画 配信</div>
-    <div class="chips"><span class="bd ch-g">モニターグループLINE（動画URL）</span></div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">Week 3<br>配信</div></div>
+    <div class="tl-m"><div class="dot" style="background:#3a3228"></div><div class="line" style="background:#2a2620"></div></div>
+    <div class="tl-r"><div class="card std">
+      <div class="ct">Week3 SNS講座 — NANAさん動画 配信</div>
+      <div class="chips"><span class="chip chip-g">グループLINE（動画URL）</span></div>
+    </div></div>
+  </div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">Week3<br>ヒアリング</div></div>
-  <div class="tl-m"><div class="dot" style="background:#14B8A6;box-shadow:0 0 0 3px #99F6E4"></div><div class="line" style="background:#99F6E4"></div></div>
-  <div class="tl-r"><div class="card hear">
-    <div class="ti">Week3 感想ヒアリング ＋ テキスト証言の依頼</div>
-    <div class="chips"><span class="bd ch-g">モニターグループLINE</span></div>
-    <div class="note">「プログラムを通じてどんな変化がありましたか？」文章で書いてもらう依頼もここで実施</div>
-    <div class="must">⚠ サンプル取得必須 ／ 申込LPに掲載する文章を収集</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">Week3<br>ヒアリング</div></div>
+    <div class="tl-m"><div class="dot" style="background:#7c9e8a"></div><div class="line" style="background:#1e3030"></div></div>
+    <div class="tl-r"><div class="card hear">
+      <div class="ct">Week3 感想ヒアリング ＋ テキスト証言の依頼</div>
+      <div class="chips"><span class="chip chip-g">グループLINE</span></div>
+      <div class="cn">「プログラムを通じてどんな変化がありましたか？」文章での証言を依頼</div>
+      <div class="must">⚑ サンプル必須 — 申込LPに掲載する文章を収集</div>
+    </div></div>
+  </div>
 
-<div class="sec-label">Week 4 — ZOOMライブ（8/23 日 11:00 確定）</div>
+  <div class="section-label">Week 4 — ZOOM（8/23 日 11:00 確定）</div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">8/16頃〜<br>8/22</div></div>
-  <div class="tl-m"><div class="dot" style="background:#9B7E5A"></div><div class="line" style="background:#D1C4A8"></div></div>
-  <div class="tl-r"><div class="card">
-    <div class="ti" style="color:#3A2010">ZOOM参加案内（1週間前・前日・当日朝）</div>
-    <div class="chips"><span class="bd ch-g">モニターグループLINE</span></div>
-    <div class="note">ZOOMリンクを発行してグループLINEで案内。リマインド3回送付</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">8/16〜<br>8/22</div></div>
+    <div class="tl-m"><div class="dot" style="background:#3a3228"></div><div class="line" style="background:#2a2620"></div></div>
+    <div class="tl-r"><div class="card std">
+      <div class="ct">ZOOM参加案内（1週間前 · 前日 · 当日朝）</div>
+      <div class="chips"><span class="chip chip-g">グループLINE</span></div>
+      <div class="cn">ZOOMリンク発行 · リマインド3回送付</div>
+    </div></div>
+  </div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">8/23（日）<br>11:00〜</div></div>
-  <div class="tl-m"><div class="dot" style="background:#2D7D4A;width:16px;height:16px;margin-left:-2px;box-shadow:0 0 0 3px #BBF7D0"></div><div class="line" style="background:#BBF7D0"></div></div>
-  <div class="tl-r"><div class="card zoom">
-    <div class="ti">Week4 ZOOMライブセッション ✅ 日時確定</div>
-    <div class="chips"><span class="bd ch-g">モニターグループLINE（参加）</span></div>
-    <div class="note">終了後 → アーカイブをUTAGEにアップ / サロンへの誘導を開始</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">8/23（日）<br>11:00〜</div></div>
+    <div class="tl-m"><div class="dot lg" style="background:#8aaa7c;box-shadow:0 0 0 3px #1e3828"></div><div class="line" style="background:#1e3828"></div></div>
+    <div class="tl-r"><div class="card zoom">
+      <div class="ct">Week4 ZOOMライブセッション ✓ 日時確定</div>
+      <div class="chips"><span class="chip chip-g">グループLINE（参加）</span></div>
+      <div class="cn">終了後 → アーカイブをUTAGEへアップ / サロン誘導を開始</div>
+    </div></div>
+  </div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">8/23<br>ZOOM後</div></div>
-  <div class="tl-m"><div class="dot" style="background:#14B8A6;box-shadow:0 0 0 3px #99F6E4"></div><div class="line" style="background:#99F6E4"></div></div>
-  <div class="tl-r"><div class="card hear">
-    <div class="ti">最終ヒアリング — 4週間の総括感想（最重要）</div>
-    <div class="chips"><span class="bd ch-g">モニターグループLINE（フォーム）</span></div>
-    <div class="note">「4週間でどんな変化がありましたか？」詳細なテキスト感想・動画コメントを依頼</div>
-    <div class="must">⚠ 最重要サンプル — ローンチ告知・申込LPの核心素材になる</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">8/23<br>ZOOM後</div></div>
+    <div class="tl-m"><div class="dot" style="background:#7c9e8a"></div><div class="line" style="background:#1e3030"></div></div>
+    <div class="tl-r"><div class="card hear">
+      <div class="ct">最終ヒアリング — 4週間の総括感想</div>
+      <div class="chips"><span class="chip chip-g">グループLINE（フォーム）</span></div>
+      <div class="cn">「4週間でどんな変化がありましたか？」詳細テキスト感想 · 動画コメントを依頼</div>
+      <div class="must">⚑ 最重要サンプル — ローンチ告知・申込LPの核心素材</div>
+    </div></div>
+  </div>
 
-<div class="sec-label">ローンチ前 集中告知（8月末〜9/4）</div>
+  <div class="section-label">ローンチ前 集中告知（8月末〜9/4）</div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">8/末〜<br>9/4</div></div>
-  <div class="tl-m"><div class="dot" style="background:#9B7E5A"></div><div class="line" style="background:#D1C4A8"></div></div>
-  <div class="tl-r"><div class="card">
-    <div class="ti" style="color:#3A2010">モニター感想を使った告知投稿（3〜5連投）</div>
-    <div class="chips"><span class="bd ch-o">オープンチャット</span><span class="bd ch-l">公式LINE</span></div>
-    <div class="note">ヒアリングで集めた声を引用・カウントダウン・申込LP誘導。Week3テキスト証言と最終ヒアリング動画が素材になる</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">8/末〜<br>9/4</div></div>
+    <div class="tl-m"><div class="dot" style="background:#3a3228"></div><div class="line" style="background:#2a2620"></div></div>
+    <div class="tl-r"><div class="card std">
+      <div class="ct">モニター感想を使った告知投稿（3〜5連投）</div>
+      <div class="chips"><span class="chip chip-o">オープンチャット</span><span class="chip chip-l">公式LINE</span></div>
+      <div class="cn">ヒアリングで集めた声を引用 · カウントダウン · 申込LP誘導。Week3テキスト証言と最終ヒアリング動画が素材になる</div>
+    </div></div>
+  </div>
 
-<div class="sec-label">ローンチ（9/6 日 確定）</div>
+  <div class="section-label">Launch</div>
 
-<div class="tl-item">
-  <div class="tl-l"><div class="tl-dt">9/6（日）<br>11:00</div></div>
-  <div class="tl-m"><div class="dot" style="background:#5C4033;width:16px;height:16px;margin-left:-2px;box-shadow:0 0 0 3px #C8A87A"></div><div class="line" style="display:none"></div></div>
-  <div class="tl-r" style="padding-bottom:0"><div class="card launch">
-    <div class="ti">Secret Tea Room — サロンローンチ ✅ 日時確定</div>
-    <div class="chips"><span class="bd ch-o">オープンチャット</span><span class="bd ch-l">公式LINE</span><span class="bd ch-g">モニターグループLINE</span></div>
-    <div class="note">全チャンネルで告知。申込LP・決済ページを通じて正式受付開始</div>
-  </div></div>
-</div>
+  <div class="tl-item">
+    <div class="tl-l"><div class="tl-dt">9/6（日）<br>11:00</div></div>
+    <div class="tl-m"><div class="dot lg" style="background:#c9a96e;box-shadow:0 0 0 3px #3a3220"></div><div class="line" style="display:none"></div></div>
+    <div class="tl-r" style="padding-bottom:0"><div class="card launch">
+      <div class="ct">Secret Tea Room — サロンローンチ ✓ 確定</div>
+      <div class="chips"><span class="chip chip-o">オープンチャット</span><span class="chip chip-l">公式LINE</span><span class="chip chip-g">グループLINE</span></div>
+      <div class="cn">全チャンネルで告知。申込LP · 決済ページを通じて正式受付開始</div>
+    </div></div>
+  </div>
 
-<div class="footer">Secret Tea Room by Mitsuki Lee　今後のスケジュール　2026-08-06</div>
+  <div class="footer">Secret Tea Room by Mitsuki Lee &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; 2026</div>
 </div>
 </body>
 </html>
