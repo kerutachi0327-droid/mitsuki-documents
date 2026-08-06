@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ファネル構成図｜Secret Tea Room by Mitsuki Lee</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;background:#F9F7F4;color:#2C1A10;font-size:14px;line-height:1.7}
+.page{max-width:720px;margin:0 auto;padding:32px 20px 60px}
+
+.doc-header{text-align:center;padding-bottom:24px;margin-bottom:32px;border-bottom:1px solid #D4C4A8}
+.brand{font-size:12px;letter-spacing:.12em;color:#9B7E5A;margin-bottom:8px}
+.doc-title{font-size:24px;font-weight:bold;color:#3A2010;margin-bottom:6px}
+.doc-sub{font-size:13px;color:#9B7E5A}
+
+.section-title{font-size:14px;font-weight:bold;color:#5C4033;letter-spacing:.06em;margin:28px 0 14px;display:flex;align-items:center;gap:8px}
+.section-title::after{content:'';flex:1;height:1px;background:#E8DDD0}
+
+/* flow diagram */
+.flow{display:flex;flex-direction:column;gap:0;align-items:center}
+.flow-step{width:100%;max-width:560px}
+.flow-arrow{display:flex;justify-content:center;padding:4px 0}
+.arrow-line{width:2px;height:20px;background:#C8A87A}
+.arrow-head{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:10px solid #C8A87A;margin:0 auto}
+
+/* cards */
+.fc{border-radius:10px;padding:14px 18px;position:relative;border:1px solid transparent}
+.fc.done{background:#fff;border-color:#2D7D4A}
+.fc.todo{background:#fff;border-color:#D4C4A8;opacity:.75}
+.fc.external{background:#F5F0E8;border-color:#C8A87A}
+.fc.critical{background:#FFF7ED;border-color:#EA580C}
+
+.fc-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.fc-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.fc-icon.done{background:#DCFCE7}
+.fc-icon.todo{background:#F5F0E8}
+.fc-icon.external{background:#E8DDD0}
+.fc-icon.critical{background:#FEF3C7}
+.fc-title{font-size:15px;font-weight:bold;color:#3A2010}
+.fc-status{margin-left:auto;font-size:11px;font-weight:bold;padding:3px 10px;border-radius:10px;white-space:nowrap}
+.status-done{background:#DCFCE7;color:#166534}
+.status-todo{background:#FEF3C7;color:#92400E}
+.status-ext{background:#E8DDD0;color:#5C4033}
+.fc-desc{font-size:12px;color:#6B4C35;margin-left:42px}
+.fc-sub{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;margin-left:42px}
+.sub-tag{background:#F5F0E8;border:1px solid #D4C4A8;border-radius:6px;padding:3px 9px;font-size:11px;color:#5C4033}
+.sub-tag.done{background:#DCFCE7;border-color:#86EFAC;color:#166534}
+
+/* 2-col for external */
+.ext-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:0}
+
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;padding:12px 16px;background:#fff;border-radius:8px;border:1px solid #E8DDD0}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#5C4033}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+.ld-done{background:#2D7D4A}
+.ld-todo{background:#EA580C}
+.ld-ext{background:#9B7E5A}
+
+.note-box{background:#fff;border:1px solid #E8DDD0;border-radius:8px;padding:14px 18px;margin-top:28px}
+.note-title{font-size:12px;font-weight:bold;color:#9B7E5A;letter-spacing:.06em;margin-bottom:8px}
+.note-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:6px}
+.note-row:last-child{margin-bottom:0}
+.note-num{background:#5C4033;color:#fff;font-size:10px;font-weight:bold;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.note-text{font-size:12px;color:#4A2E1A}
+
+.footer{text-align:center;color:#B0906E;font-size:11px;margin-top:40px;padding-top:16px;border-top:1px solid #E8DDD0}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="doc-header">
+  <div class="brand">SECRET TEA ROOM BY MITSUKI LEE</div>
+  <div class="doc-title">ファネル構成図</div>
+  <div class="doc-sub">サロン運営の全体設計 — 2026年9月6日ローンチ</div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot ld-done"></div>構築済み</div>
+  <div class="legend-item"><div class="legend-dot ld-todo"></div>未作成（要対応）</div>
+  <div class="legend-item"><div class="legend-dot ld-ext"></div>外部ツール（LINE）</div>
+</div>
+
+<div class="section-title">入口 — 認知・集客</div>
+<div class="ext-grid">
+  <div class="fc external">
+    <div class="fc-header">
+      <div class="fc-icon external">💬</div>
+      <div class="fc-title">LINEオープンチャット</div>
+      <div class="fc-status status-ext">外部</div>
+    </div>
+    <div class="fc-desc">一般フォロワーへの情報発信。動画・雰囲気を届けてサロン興味を高める</div>
+  </div>
+  <div class="fc external">
+    <div class="fc-header">
+      <div class="fc-icon external">📩</div>
+      <div class="fc-title">公式LINE</div>
+      <div class="fc-status status-ext">外部</div>
+    </div>
+    <div class="fc-desc">友だち追加済みの全フォロワーへ直接配信。ローンチ告知・LP誘導</div>
+  </div>
+</div>
+
+<div class="flow">
+  <div class="flow-arrow"><div style="display:flex;flex-direction:column;align-items:center"><div class="arrow-line"></div><div class="arrow-head"></div></div></div>
+
+  <div class="flow-step">
+    <div class="fc done">
+      <div class="fc-header">
+        <div class="fc-icon done">🔗</div>
+        <div class="fc-title">オープンチャット 引き込みLP</div>
+        <div class="fc-status status-done">✓ 構築済み</div>
+      </div>
+      <div class="fc-desc">オプチャからUTAGEへ誘導するランディングページ。友だち追加を促す</div>
+      <div class="fc-sub"><span class="sub-tag done">UTAGE</span><span class="sub-tag done">Step: put0WHyIL4Zp</span></div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"><div style="display:flex;flex-direction:column;align-items:center"><div class="arrow-line"></div><div class="arrow-head"></div></div></div>
+
+  <div class="flow-step">
+    <div class="fc done">
+      <div class="fc-header">
+        <div class="fc-icon done">🎬</div>
+        <div class="fc-title">動画配信ファネル（モニタープログラム）</div>
+        <div class="fc-status status-done">✓ 構築済み</div>
+      </div>
+      <div class="fc-desc">Week1〜4の動画を配信するUTAGEページ。モニター10名が閲覧中</div>
+      <div class="fc-sub">
+        <span class="sub-tag done">Week1 食事法</span>
+        <span class="sub-tag done">Week1 モデルペルソナ</span>
+        <span class="sub-tag">Week2 英会話（準備中）</span>
+        <span class="sub-tag">Week3 SNS講座（準備中）</span>
+        <span class="sub-tag">Week4 ZOOMアーカイブ（8/23後）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"><div style="display:flex;flex-direction:column;align-items:center"><div class="arrow-line"></div><div class="arrow-head"></div></div></div>
+
+  <div class="flow-step">
+    <div class="fc critical">
+      <div class="fc-header">
+        <div class="fc-icon critical">📋</div>
+        <div class="fc-title">サロン申込LP</div>
+        <div class="fc-status status-todo">未作成</div>
+      </div>
+      <div class="fc-desc">9/6ローンチ用の申込みページ。モニターの感想・サロン内容・価格を掲載</div>
+      <div class="fc-sub"><span class="sub-tag">UTAGE</span><span class="sub-tag">ローンチまでに必須</span></div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"><div style="display:flex;flex-direction:column;align-items:center"><div class="arrow-line"></div><div class="arrow-head"></div></div></div>
+
+  <div class="flow-step">
+    <div class="fc critical">
+      <div class="fc-header">
+        <div class="fc-icon critical">💳</div>
+        <div class="fc-title">決済ページ</div>
+        <div class="fc-status status-todo">未作成</div>
+      </div>
+      <div class="fc-desc">月額決済の受付ページ。ユニバペイ連携予定。金額確定後に構築</div>
+      <div class="fc-sub"><span class="sub-tag">UTAGE</span><span class="sub-tag">月額料金を打ち合わせで確定</span></div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"><div style="display:flex;flex-direction:column;align-items:center"><div class="arrow-line"></div><div class="arrow-head"></div></div></div>
+
+  <div class="flow-step">
+    <div class="fc critical">
+      <div class="fc-header">
+        <div class="fc-icon critical">🏠</div>
+        <div class="fc-title">会員サイト（メンバーエリア）</div>
+        <div class="fc-status status-todo">未作成</div>
+      </div>
+      <div class="fc-desc">月額会員が動画・コンテンツにアクセスするUTAGE会員専用エリア</div>
+      <div class="fc-sub"><span class="sub-tag">UTAGE</span><span class="sub-tag">Week別コンテンツを格納</span></div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"><div style="display:flex;flex-direction:column;align-items:center"><div class="arrow-line"></div><div class="arrow-head"></div></div></div>
+
+  <div class="flow-step">
+    <div class="fc critical">
+      <div class="fc-header">
+        <div class="fc-icon critical">📬</div>
+        <div class="fc-title">ステップ配信（公式LINE）</div>
+        <div class="fc-status status-todo">未設定</div>
+      </div>
+      <div class="fc-desc">友だち追加後の自動メッセージシナリオ。入会歓迎・コンテンツ案内を自動化</div>
+      <div class="fc-sub"><span class="sub-tag">UTAGE × 公式LINE連携</span></div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"><div style="display:flex;flex-direction:column;align-items:center"><div class="arrow-line"></div><div class="arrow-head"></div></div></div>
+
+  <div class="flow-step">
+    <div class="fc external">
+      <div class="fc-header">
+        <div class="fc-icon external">💚</div>
+        <div class="fc-title">グループLINE（モニター専用）</div>
+        <div class="fc-status status-ext">外部・稼働中</div>
+      </div>
+      <div class="fc-desc">現在モニター10名が参加中。動画URL・ZOOM案内・ヒアリングに使用</div>
+    </div>
+  </div>
+</div>
+
+<div class="note-box">
+  <div class="note-title">NEXT ACTIONS — 優先順位順</div>
+  <div class="note-row"><div class="note-num">1</div><div class="note-text">月額料金を打ち合わせで確定 → 決済ページ構築に着手</div></div>
+  <div class="note-row"><div class="note-num">2</div><div class="note-text">サロン申込LP制作（モニター感想・コンテンツ紹介・価格を掲載）</div></div>
+  <div class="note-row"><div class="note-num">3</div><div class="note-text">会員サイト構築（UTAGEメンバーエリア設定）</div></div>
+  <div class="note-row"><div class="note-num">4</div><div class="note-text">ステップ配信シナリオ作成（公式LINE友だち追加後のフロー）</div></div>
+</div>
+
+<div class="footer">Secret Tea Room by Mitsuki Lee　ファネル構成図　2026-08-06</div>
+</div>
+</body>
+</html>
