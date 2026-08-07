@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week3 SNS講座 議事録 | Secret Tea Room by Mitsuki Lee</title>
+<meta name="robots" content="noindex">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#0a0907;color:#f0ead8;font-family:'Noto Sans JP',sans-serif;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:32px 16px}
+.slide{width:100%;max-width:780px;background:linear-gradient(145deg,#1a1712 0%,#12100d 100%);border:1px solid #3a3228;border-radius:4px;padding:44px 48px 40px;position:relative;overflow:hidden}
+.slide::before{content:'';position:absolute;top:0;left:0;width:80px;height:80px;border-top:1px solid #c9a96e;border-left:1px solid #c9a96e;pointer-events:none}
+.slide::after{content:'';position:absolute;bottom:0;right:0;width:80px;height:80px;border-bottom:1px solid #c9a96e;border-right:1px solid #c9a96e;pointer-events:none}
+
+.header{text-align:center;margin-bottom:28px}
+.eyebrow{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:4px;color:#c9a96e;text-transform:uppercase;margin-bottom:8px}
+.title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#f0ead8;letter-spacing:.05em;line-height:1.3}
+.title em{font-style:italic;color:#c9a96e}
+.doc-date{font-size:10px;color:#4a4030;margin-top:8px;letter-spacing:.5px}
+
+.divider{display:flex;align-items:center;gap:12px;margin:0 auto 28px;max-width:400px}
+.divider-line{flex:1;height:1px;background:#3a3228}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:#c9a96e;flex-shrink:0}
+
+.section-label{font-size:9.5px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin:0 0 14px}
+
+/* Summary box */
+.summary-box{background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.2);border-radius:3px;padding:16px 22px;margin-bottom:28px}
+.summary-box p{font-size:12px;color:#d4c9b0;line-height:1.85;font-weight:300}
+.summary-box strong{color:#f0ead8;font-weight:500}
+
+/* Decided */
+.decided-list{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.decided-item{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border:1px solid #2a2620;border-radius:3px}
+.dicon{font-family:'Cormorant Garamond',serif;font-size:14px;color:#8aaa7c;min-width:16px;flex-shrink:0;padding-top:1px}
+.dtext{font-size:11.5px;color:#d4c9b0;line-height:1.6}
+.dsub{font-size:10px;color:#6a6050;margin-top:2px}
+
+/* Two column */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+@media(max-width:600px){.two-col{grid-template-columns:1fr}}
+
+/* Person card */
+.person-card{border:1px solid #3a3228;border-radius:3px;padding:16px 18px}
+.person-card.nana{border-top:2px solid #c9a96e}
+.person-card.mitsuki{border-top:2px solid #7c9e8a}
+.person-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
+.nana .person-label{color:#9a7a52}
+.mitsuki .person-label{color:#5a8a72}
+.person-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:12px}
+.nana .person-name{color:#c9a96e}
+.mitsuki .person-name{color:#7c9e8a}
+
+.task-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.task-item{display:flex;align-items:flex-start;gap:8px;font-size:11px;color:#d4c9b0;padding:5px 0;border-bottom:1px solid #1e1b16;line-height:1.55}
+.task-item:last-child{border-bottom:none}
+.chk{width:13px;height:13px;border:1px solid #3a3228;border-radius:2px;flex-shrink:0;margin-top:1px}
+.task-sub{font-size:9.5px;color:#6a6050;margin-top:2px;display:block}
+
+.deadline{display:inline-block;font-size:9px;padding:1px 7px;border-radius:6px;margin-left:6px;vertical-align:middle}
+.dl-red{background:rgba(180,80,60,.12);color:#9a5040;border:1px solid rgba(180,80,60,.2)}
+.dl-gray{background:rgba(255,255,255,.04);color:#6a6050}
+
+/* Content plan */
+.content-card{border:1px solid #3a3228;border-radius:3px;padding:18px 22px;margin-bottom:28px}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
+@media(max-width:600px){.content-grid{grid-template-columns:1fr}}
+
+.content-block{}
+.cb-title{font-size:9.5px;letter-spacing:2px;color:#6a6050;text-transform:uppercase;margin-bottom:8px}
+.cb-list{list-style:none}
+.cb-list li{font-size:11px;color:#d4c9b0;padding:4px 0 4px 12px;position:relative;border-bottom:1px solid #1a1814;line-height:1.5}
+.cb-list li:last-child{border-bottom:none}
+.cb-list li::before{content:'—';position:absolute;left:0;color:#3a3228;font-size:9px;top:6px}
+
+/* SNS strategy */
+.strategy-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
+.st-block{border:1px solid #2a2620;border-radius:3px;padding:12px 14px}
+.st-num{font-family:'Cormorant Garamond',serif;font-size:11px;color:#4a4030;letter-spacing:2px;margin-bottom:4px}
+.st-title{font-size:12px;font-weight:500;color:#d4c9b0;margin-bottom:6px}
+.st-desc{font-size:10px;color:#6a6050;line-height:1.6}
+@media(max-width:600px){.strategy-strip{grid-template-columns:1fr}}
+
+/* Rule box */
+.rule-box{background:rgba(201,169,110,.04);border:1px solid rgba(201,169,110,.15);border-radius:3px;padding:14px 20px;margin-bottom:28px;display:flex;align-items:center;gap:16px}
+.rule-icon{font-family:'Cormorant Garamond',serif;font-size:24px;color:#4a4030;flex-shrink:0}
+.rule-text{font-size:11.5px;color:#d4c9b0;line-height:1.7}
+.rule-text strong{color:#c9a96e;font-weight:500}
+
+.footer{margin-top:28px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:3px;color:#2e2a24;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="header">
+    <div class="eyebrow">Meeting Brief — 2026.08.07</div>
+    <div class="title">Week3 SNS講座 — <em>議事録・要件整理</em></div>
+    <div class="doc-date">ナナ・みつきへの連携資料</div>
+  </div>
+  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+  <!-- Summary -->
+  <div class="summary-box">
+    <p>Secret Tea Room モニタープログラムの <strong>Week3</strong> を <strong>NANAさん（おままごとスクール）</strong> が担当するSNS講座として実施する。参加者の「最初の一歩の背中を押す」ことを目的とし、まず <strong>「なぜSNSが大事なのか」</strong> という根本テーマから入る構成が確定した。</p>
+  </div>
+
+  <!-- Decided -->
+  <div class="section-label">Confirmed — 確定事項</div>
+  <div class="decided-list">
+    <div class="decided-item">
+      <div class="dicon">✓</div>
+      <div>
+        <div class="dtext">最初の動画テーマは「なぜSNSが必要か」</div>
+        <div class="dsub">ノウハウより先に「目的の理解」から入る。参加者の心理的障壁を取り除く</div>
+      </div>
+    </div>
+    <div class="decided-item">
+      <div class="dicon">✓</div>
+      <div>
+        <div class="dtext">動画形式は録画（ライブ不要）。長さは30分程度</div>
+        <div class="dsub">参加者の集中力を考慮。まず完成コンテンツを提供し、反応を見てZoomを検討</div>
+      </div>
+    </div>
+    <div class="decided-item">
+      <div class="dicon">✓</div>
+      <div>
+        <div class="dtext">コンテンツ提出ルール：配信日の3日前まで</div>
+        <div class="dsub">アップロード時間・不測の事態に備えるため。全担当者共通ルール</div>
+      </div>
+    </div>
+    <div class="decided-item">
+      <div class="dicon">✓</div>
+      <div>
+        <div class="dtext">Week3公開予定日：8月17日（日）</div>
+        <div class="dsub">NANAさんへの提出期限は8月14日（木）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Items -->
+  <div class="section-label">Action Items — ナナ・みつき</div>
+  <div class="two-col">
+
+    <div class="person-card nana">
+      <div class="person-label">担当者</div>
+      <div class="person-name">NANA</div>
+      <ul class="task-list">
+        <li class="task-item">
+          <div style="width:13px;height:13px;border:1px solid #3a5030;border-radius:2px;background:rgba(138,170,124,.15);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#8aaa7c;">✓</div>
+          <div>
+            第1回シナリオ叩き台を提出
+            <span class="task-sub">✓ 受領済み（8/7）</span>
+          </div>
+        </li>
+        <li class="task-item">
+          <div class="chk"></div>
+          <div>
+            シナリオをもとに第1回動画を制作
+            <span class="deadline dl-red">〆切：8/10</span>
+            <span class="task-sub">テーマ「なぜSNSが必要か」/ 約30分 / 録画形式</span>
+          </div>
+        </li>
+        <li class="task-item">
+          <div class="chk"></div>
+          <div>
+            動画をケンティーに納品
+            <span class="deadline dl-red">〆切：8/14</span>
+            <span class="task-sub">UTAGEアップ → 8/17公開</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="person-card mitsuki">
+      <div class="person-label">担当者</div>
+      <div class="person-name">Mitsuki / ケンティー</div>
+      <ul class="task-list">
+        <li class="task-item">
+          <div style="width:13px;height:13px;border:1px solid #3a5030;border-radius:2px;background:rgba(138,170,124,.15);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#8aaa7c;">✓</div>
+          <div>
+            NANAへ提出期限・スケジュールを連絡
+            <span class="task-sub">✓ 完了済み</span>
+          </div>
+        </li>
+        <li class="task-item">
+          <div class="chk"></div>
+          <div>
+            NANAへの支払い金額を確認
+            <span class="deadline dl-gray">期限：未定</span>
+            <span class="task-sub">なな・ケンティーで確認・合意</span>
+          </div>
+        </li>
+        <li class="task-item">
+          <div class="chk"></div>
+          <div>
+            動画受け取り後、UTAGEへアップ
+            <span class="deadline dl-red">〆切：8/14以降</span>
+            <span class="task-sub">担当：ケンティー / Week3ページ公開準備</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scenario Summary -->
+  <div class="section-label">第1回シナリオ — 要約（受領済み）</div>
+  <div class="content-card">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:14px;color:#c9a96e;margin-bottom:12px;font-style:italic;">「SNSは未来のチャンスをつくる名刺」 / 約30分</div>
+    <div class="content-grid">
+      <div class="content-block">
+        <div class="cb-title">動画の流れ</div>
+        <ul class="cb-list">
+          <li><strong style="color:#d4c9b0;">①</strong> オープニング・自己紹介（約5分）<br><span style="color:#4a4030;font-size:9.5px;">700人規模映像制作の実績紹介。「難しくても学べばできる」姿勢</span></li>
+          <li><strong style="color:#d4c9b0;">②</strong> SNSは未来の名刺（約5分）<br><span style="color:#4a4030;font-size:9.5px;">企業・事務所が採用時にSNSを最初に確認する時代。ワーク①</span></li>
+          <li><strong style="color:#d4c9b0;">③</strong> SNSの可能性（約7分）<br><span style="color:#4a4030;font-size:9.5px;">フォロワー数でなく「この人と仕事したい」発信が大事。ワーク②</span></li>
+          <li><strong style="color:#d4c9b0;">④</strong> 続けるコツ（約5分）<br><span style="color:#4a4030;font-size:9.5px;">難しい編集より「毎日写真・動画を撮る」から始める</span></li>
+          <li><strong style="color:#d4c9b0;">⑤</strong> みつきのSNSを解説（約5分）<br><span style="color:#4a4030;font-size:9.5px;">フィード=憧れ感、リール=日常・親近感。この両輪がファンをつくる</span></li>
+        </ul>
+      </div>
+      <div class="content-block">
+        <div class="cb-title">ワーク・課題</div>
+        <ul class="cb-list">
+          <li>ワーク①：なぜSNSをやりたいか書き出す</li>
+          <li>ワーク②：1年後SNSで叶っていたら嬉しいこと</li>
+          <li>ワーク③：どんな人として覚えてもらいたいか（発信の軸）</li>
+          <li>今月の課題：Instagram / TikTokでリール1本投稿。テーマ「今日の私」</li>
+        </ul>
+        <div class="cb-title" style="margin-top:14px;">この回のねらい</div>
+        <ul class="cb-list">
+          <li>テクニックでなく「SNSと向き合うマインド」を作る回</li>
+          <li>「やらなきゃ」でなく「楽しいからやってる！」状態を目指す</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SNS Strategy Key Points -->
+  <div class="section-label">NANA SNS戦略 — キーポイント（共有情報）</div>
+  <div class="strategy-strip">
+    <div class="st-block">
+      <div class="st-num">01</div>
+      <div class="st-title">SNSは名刺</div>
+      <div class="st-desc">企業・事務所はキャスティング時に必ずSNSをチェック。スカウトの99%がSNS経由</div>
+    </div>
+    <div class="st-block">
+      <div class="st-num">02</div>
+      <div class="st-title">憧れ×親近感</div>
+      <div class="st-desc">フィード=プロ感（憧れ）、リール=日常（親近感）。両方あるからファンになる</div>
+    </div>
+    <div class="st-block">
+      <div class="st-num">03</div>
+      <div class="st-title">まず続けること</div>
+      <div class="st-desc">毎日投稿でなく毎日撮ることから。「楽しい」を先につくる</div>
+    </div>
+  </div>
+
+  <!-- Rule -->
+  <div class="rule-box">
+    <div class="rule-icon">!</div>
+    <div class="rule-text">
+      <strong>全担当者共通ルール：コンテンツ提出は配信日の3日前まで</strong><br>
+      アップロードに時間がかかる場合（回線問題など）を想定した余裕を設ける。Week3の場合、8/17公開 → <strong>8/14（木）までに提出</strong>。
+    </div>
+  </div>
+
+  <div class="footer">Secret Tea Room by Mitsuki Lee &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; 2026.08.07</div>
+</div>
+</body>
+</html>
